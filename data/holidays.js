@@ -1,12 +1,208 @@
 export const holidayCategories = [
   { id: "all", label: "All Packages" },
+  { id: "international", label: "International" },
+  { id: "domestic", label: "Domestic" },
   { id: "umrah", label: "Umrah" },
-  { id: "international", label: "International Holidays" },
-  { id: "domestic", label: "Domestic Holidays" },
   { id: "group-tours", label: "Group Tours" },
 ];
 
 export const holidayPackages = [
+  {
+    id: "manali-solang-snow-retreat",
+    slug: "manali-solang-snow-retreat",
+    category: "domestic",
+    title: "Magical Manali & Solang Valley Snow Escape",
+    destination: "Manali, Himachal Pradesh, India",
+    duration: "5 Days / 4 Nights",
+    durationBadge: "4 Nights / 5 Days",
+    startingPrice: "₹9,999",
+    priceDisplay: "From ₹9,999",
+    featured: true,
+    coverImage: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1571536802807-30451e3955d8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df8?q=80&w=1200&auto=format&fit=crop"
+    ],
+    overview: "Breathe in the alpine air with our bestselling Manali getaway: snow activities at Solang Valley, hot springs at Vashisht, visits to Hadimba Temple, and scenic Kullu river rafting.",
+    hotelInfo: {
+      manali: "4-Star Riverview / Valley Resort in Old Manali or Log Huts Area (4 Nights)"
+    },
+    inclusions: [
+      "4 Nights accommodation in 4-Star Resort with private balcony",
+      "Daily buffet breakfast & dinner (MAP plan)",
+      "Full-day excursion to Solang Valley & Atal Tunnel (subject to permit)",
+      "Local Manali sightseeing: Hadimba Temple, Vashisht Village, Mall Road",
+      "Day tour to Kullu Valley & Naggar Castle with river rafting assistance",
+      "Private sanitized AC sedan/SUV for transfers & sightseeing"
+    ],
+    exclusions: [
+      "Rohtang Pass NGT green tax permit fees (direct payable)",
+      "Adventure sports activities (paragliding, skiing, zorbing)",
+      "Personal expenses, room heaters, and laundry"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Manali — Riverside Welcome",
+        description: "Arrive at Bhuntar Airport / Volvo bus stand. Private pickup and transfer to resort. Relax and explore the evening vibe on Mall Road and Tibetan Monastery."
+      },
+      {
+        day: 2,
+        title: "Solang Valley & Atal Tunnel Adventure",
+        description: "Drive towards Solang Valley. Enjoy snow activities, paragliding, or quad biking. Drive through the historic Atal Tunnel into Lahaul Valley (Sissu Waterfall)."
+      },
+      {
+        day: 3,
+        title: "Naggar Castle & Kullu Valley Rafting",
+        description: "Visit historic Naggar Castle overlooking the Beas River, Nicholas Roerich Art Gallery, and stop at Kullu for exhilarating river rafting and shawl weaving factory."
+      },
+      {
+        day: 4,
+        title: "Local Heritage & Hadimba Temple",
+        description: "Explore the ancient wooden Hadimba Devi Temple amidst cedar forests, Manu Temple in Old Manali, and unwind at Vashisht natural sulphur springs."
+      },
+      {
+        day: 5,
+        title: "Departure from Manali",
+        description: "Breakfast with panoramic valley views. Free time for souvenir shopping before transfer to Volvo stand / airport for return journey."
+      }
+    ]
+  },
+  {
+    id: "international-group-tour-dubai-explorer",
+    slug: "international-group-tour-dubai-explorer",
+    category: "international",
+    title: "Dubai Grand Explorer: Desert Safari & Burj Khalifa",
+    destination: "Dubai & Abu Dhabi, UAE",
+    duration: "5 Days / 4 Nights",
+    durationBadge: "4 Nights / 5 Days",
+    startingPrice: "₹24,999",
+    priceDisplay: "From ₹24,999",
+    featured: true,
+    coverImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1200&auto=format&fit=crop"
+    ],
+    overview: "Our bestselling tour featuring Dubai's grandest icons: ascending Burj Khalifa 124th floor, thrilling 4x4 desert dune bashing with barbecue dinner, Dubai Marina yacht cruise, and Sheikh Zayed Grand Mosque in Abu Dhabi.",
+    hotelInfo: {
+      dubai: "4-Star Deluxe Hotel in Downtown / Al Barsha with metro connectivity (4 Nights)"
+    },
+    inclusions: [
+      "UAE Tourist Visa with COVID travel medical insurance",
+      "4 Nights accommodation with daily buffet breakfast",
+      "Burj Khalifa 124th/125th floor non-prime admission tickets",
+      "Dubai Mall & Dubai Fountain evening show",
+      "Thrilling 4x4 Desert Safari with dune bashing, camel ride, Tanoura show & BBQ dinner",
+      "Dubai Marina 5-Star Luxury Dhow Cruise with international buffet dinner",
+      "Half-day Dubai city tour with photo stops at Burj Al Arab & Dubai Frame",
+      "Full day guided Abu Dhabi city tour with Sheikh Zayed Grand Mosque visit",
+      "Round-trip airport transfers in luxury group coach"
+    ],
+    exclusions: [
+      "International round-trip flights",
+      "Tourism Dirham fee payable directly at hotel check-in",
+      "Personal expenses and optional activities"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Dubai — Marina Dhow Cruise Welcome",
+        description: "Arrive at Dubai International Airport (DXB). Group coach transfer to hotel. In the evening, board a traditional wooden dhow cruise along illuminated Dubai Marina skyscrapers with dinner."
+      },
+      {
+        day: 2,
+        title: "Dubai City Tour & Burj Khalifa At The Top",
+        description: "Morning city tour covering Dubai Creek, Gold Souk, Burj Al Arab photo stop, and Atlantis The Palm. Afternoon visit to Dubai Mall and ascend to the 124th floor of Burj Khalifa for breathtaking panoramas."
+      },
+      {
+        day: 3,
+        title: "Desert Safari Extravaganza with BBQ Dinner",
+        description: "Morning at leisure. In the afternoon, pick-up in 4x4 Land Cruisers for thrilling red dune bashing in the Lahbab desert. Enjoy camel riding, sandboarding, falcon photography, and a lavish BBQ dinner with live belly dance and Tanoura shows under the stars."
+      },
+      {
+        day: 4,
+        title: "Abu Dhabi Full Day Capital Tour",
+        description: "Full day excursion to the UAE capital. Visit the breathtaking Sheikh Zayed Grand Mosque, drive along the Corniche, view Emirates Palace and Qasr Al Watan, and photo stop at Ferrari World Abu Dhabi."
+      },
+      {
+        day: 5,
+        title: "Dubai Departure",
+        description: "Breakfast at hotel. Free time for shopping at Deira Gold Souk or Mall of the Emirates before group transfer to Dubai International Airport."
+      }
+    ]
+  },
+  {
+    id: "andaman-havelock-island-getaway",
+    slug: "andaman-havelock-island-getaway",
+    category: "domestic",
+    title: "Exotic Andaman: Port Blair, Havelock & Radhanagar Beach",
+    destination: "Andaman & Nicobar Islands, India",
+    duration: "6 Days / 5 Nights",
+    durationBadge: "5 Nights / 6 Days",
+    startingPrice: "₹18,499",
+    priceDisplay: "From ₹18,499",
+    featured: true,
+    coverImage: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1200&auto=format&fit=crop",
+    gallery: [
+      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+    ],
+    overview: "Witness turquoise lagoons, white coral beaches, and historical monuments: Cellular Jail Light & Sound show, Makruzz cruise to Havelock Island, and sunset at Asia's best Radhanagar Beach.",
+    hotelInfo: {
+      portBlair: "4-Star Sea-facing Hotel in Port Blair (3 Nights)",
+      havelock: "Luxury Beachfront Cottages in Havelock Island (2 Nights)"
+    },
+    inclusions: [
+      "5 Nights hotel & beachfront resort accommodation",
+      "Daily breakfast at all hotels",
+      "High-speed private catamaran (Makruzz / Nautika) tickets to Havelock",
+      "Cellular Jail visit with evening Light & Sound show tickets",
+      "Excursion to Elephant Beach with complimentary coral snorkeling",
+      "Sunset tour at world-renowned Radhanagar Beach (Beach No. 7)",
+      "All airport, jetty transfers and sightseeing in private AC vehicle"
+    ],
+    exclusions: [
+      "Flight tickets to and from Port Blair (IXZ)",
+      "Scuba diving, Sea Walk, and Jet ski charges",
+      "Camera fees and personal expenses"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive in Port Blair — Cellular Jail & Light Show",
+        description: "Arrive at Veer Savarkar Airport (IXZ). Transfer to hotel. In the afternoon, visit the historic Cellular Jail followed by the moving Light & Sound saga of India's freedom struggle."
+      },
+      {
+        day: 2,
+        title: "Private Cruise to Havelock — Radhanagar Sunset",
+        description: "Board luxury cruise to Havelock Island. Check in to beachfront resort. Spend the afternoon at Radhanagar Beach, rated among the best beaches in the world for its powder-white sand and emerald water."
+      },
+      {
+        day: 3,
+        title: "Elephant Beach Snorkeling & Water Sports",
+        description: "Speedboat ride to Elephant Beach. Explore vibrant coral reefs with colorful marine life while snorkeling. Afternoon at leisure for beachside relaxation."
+      },
+      {
+        day: 4,
+        title: "Havelock to Port Blair — Chidiya Tapu Sunset",
+        description: "Morning cruise back to Port Blair. In the evening, drive to Chidiya Tapu (Bird Island) for one of the most stunning sunset vistas in the Andaman Sea."
+      },
+      {
+        day: 5,
+        title: "Ross Island (Netaji Subhash Chandra Bose Island)",
+        description: "Boat excursion to Ross Island, the erstwhile British administrative capital, now draped in majestic banyan roots and deer sanctuaries."
+      },
+      {
+        day: 6,
+        title: "Port Blair Departure",
+        description: "Breakfast at hotel. Private transfer to Port Blair airport for your onward journey with pristine island memories."
+      }
+    ]
+  },
   {
     id: "premium-umrah-package",
     slug: "premium-umrah-package",
@@ -14,8 +210,10 @@ export const holidayPackages = [
     title: "15 Days Executive Umrah Package",
     destination: "Makkah & Madinah, Saudi Arabia",
     duration: "15 Days / 14 Nights",
+    durationBadge: "14 Nights / 15 Days",
+    startingPrice: "₹74,999",
+    priceDisplay: "From ₹74,999",
     featured: true,
-    priceDisplay: "Request a Quote",
     coverImage: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1200&auto=format&fit=crop",
@@ -130,8 +328,10 @@ export const holidayPackages = [
     title: "Enchanting Vietnam: Hanoi, Halong Bay & Da Nang",
     destination: "Hanoi, Halong Bay & Da Nang, Vietnam",
     duration: "7 Days / 6 Nights",
+    durationBadge: "6 Nights / 7 Days",
+    startingPrice: "₹28,999",
+    priceDisplay: "From ₹28,999",
     featured: true,
-    priceDisplay: "Request a Quote",
     coverImage: "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop",
@@ -206,8 +406,10 @@ export const holidayPackages = [
     title: "Best of Thailand: Phuket Island & Bangkok City",
     destination: "Phuket & Bangkok, Thailand",
     duration: "6 Days / 5 Nights",
+    durationBadge: "5 Nights / 6 Days",
+    startingPrice: "₹22,499",
+    priceDisplay: "From ₹22,499",
     featured: true,
-    priceDisplay: "Request a Quote",
     coverImage: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1200&auto=format&fit=crop",
@@ -275,8 +477,10 @@ export const holidayPackages = [
     title: "Heaven on Earth: Srinagar, Gulmarg & Pahalgam",
     destination: "Kashmir, India",
     duration: "6 Days / 5 Nights",
+    durationBadge: "5 Nights / 6 Days",
+    startingPrice: "₹16,999",
+    priceDisplay: "From ₹16,999",
     featured: true,
-    priceDisplay: "Request a Quote",
     coverImage: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=1200&auto=format&fit=crop",
@@ -344,8 +548,10 @@ export const holidayPackages = [
     title: "Sunkissed Goa: Beaches, Heritage & Sunset Cruise",
     destination: "Goa, India",
     duration: "4 Days / 3 Nights",
+    durationBadge: "3 Nights / 4 Days",
+    startingPrice: "₹9,499",
+    priceDisplay: "From ₹9,499",
     featured: true,
-    priceDisplay: "Request a Quote",
     coverImage: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
     gallery: [
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1200&auto=format&fit=crop",
@@ -389,69 +595,6 @@ export const holidayPackages = [
         day: 4,
         title: "Goa Departure",
         description: "Breakfast at the resort. Time for souvenir shopping of cashews and spices before your private transfer to the airport."
-      }
-    ]
-  },
-  {
-    id: "international-group-tour-dubai-explorer",
-    slug: "international-group-tour-dubai-explorer",
-    category: "group-tours",
-    title: "Dubai Grand Explorer: Desert Safari, Marina & Burj Khalifa",
-    destination: "Dubai & Abu Dhabi, UAE",
-    duration: "5 Days / 4 Nights",
-    featured: true,
-    priceDisplay: "Request a Quote",
-    coverImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1200&auto=format&fit=crop"
-    ],
-    overview: "Our bestselling small-group tour featuring Dubai's grandest icons: ascending Burj Khalifa 124th floor, thrilling 4x4 desert dune bashing with barbecue dinner, Dubai Marina yacht cruise, and Sheikh Zayed Grand Mosque in Abu Dhabi.",
-    hotelInfo: {
-      dubai: "4-Star Deluxe Hotel in Downtown / Al Barsha with metro connectivity (4 Nights)"
-    },
-    inclusions: [
-      "UAE Tourist Visa with COVID travel medical insurance",
-      "4 Nights accommodation with daily buffet breakfast",
-      "Burj Khalifa 124th/125th floor non-prime admission tickets",
-      "Dubai Mall & Dubai Fountain evening show",
-      "Thrilling 4x4 Desert Safari with dune bashing, camel ride, Tanoura show & BBQ dinner",
-      "Dubai Marina 5-Star Luxury Dhow Cruise with international buffet dinner",
-      "Half-day Dubai city tour with photo stops at Burj Al Arab & Dubai Frame",
-      "Full day guided Abu Dhabi city tour with Sheikh Zayed Grand Mosque visit",
-      "Round-trip airport transfers in luxury group coach"
-    ],
-    exclusions: [
-      "International round-trip flights",
-      "Tourism Dirham fee payable directly at hotel check-in",
-      "Personal expenses and optional activities"
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrive in Dubai — Marina Dhow Cruise Welcome",
-        description: "Arrive at Dubai International Airport (DXB). Group coach transfer to hotel. In the evening, board a traditional wooden dhow cruise along illuminated Dubai Marina skyscrapers with dinner."
-      },
-      {
-        day: 2,
-        title: "Dubai City Tour & Burj Khalifa At The Top",
-        description: "Morning city tour covering Dubai Creek, Gold Souk, Burj Al Arab photo stop, and Atlantis The Palm. Afternoon visit to Dubai Mall and ascend to the 124th floor of Burj Khalifa for breathtaking panoramas."
-      },
-      {
-        day: 3,
-        title: "Desert Safari Extravaganza with BBQ Dinner",
-        description: "Morning at leisure. In the afternoon, pick-up in 4x4 Land Cruisers for thrilling red dune bashing in the Lahbab desert. Enjoy camel riding, sandboarding, falcon photography, and a lavish BBQ dinner with live belly dance and Tanoura shows under the stars."
-      },
-      {
-        day: 4,
-        title: "Abu Dhabi Full Day Capital Tour",
-        description: "Full day excursion to the UAE capital. Visit the breathtaking Sheikh Zayed Grand Mosque, drive along the Corniche, view Emirates Palace and Qasr Al Watan, and photo stop at Ferrari World Abu Dhabi."
-      },
-      {
-        day: 5,
-        title: "Dubai Departure",
-        description: "Breakfast at hotel. Free time for shopping at Deira Gold Souk or Mall of the Emirates before group transfer to Dubai International Airport."
       }
     ]
   }

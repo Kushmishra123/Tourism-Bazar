@@ -1,9 +1,11 @@
 import HeroSection from '@/components/home/HeroSection';
-import CoreServicesSection from '@/components/home/CoreServicesSection';
-import PopularVisasSection from '@/components/home/PopularVisasSection';
+import TrustStatsSection from '@/components/home/TrustStatsSection';
+import BoardingPassBanner from '@/components/home/BoardingPassBanner';
 import FeaturedHolidaysSection from '@/components/home/FeaturedHolidaysSection';
-import WhyChooseUsSection from '@/components/home/WhyChooseUsSection';
+import DestinationExplorerSection from '@/components/home/DestinationExplorerSection';
+import CoreServicesSection from '@/components/home/CoreServicesSection';
 import HowItWorksSection from '@/components/home/HowItWorksSection';
+import WhyChooseUsSection from '@/components/home/WhyChooseUsSection';
 import DocumentationPreviewSection from '@/components/home/DocumentationPreviewSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import FaqSection from '@/components/home/FaqSection';
@@ -12,34 +14,40 @@ import FinalCtaSection from '@/components/home/FinalCtaSection';
 export default function HomePage() {
   return (
     <>
-      {/* SECTION A: HERO */}
+      {/* 1. HERO WITH MULTI-TAB SEARCH & QUOTE WIDGET (ABOVE THE FOLD) */}
       <HeroSection />
 
-      {/* SECTION B: FOUR CORE SERVICES */}
-      <CoreServicesSection />
+      {/* 2. 4-COLUMN TRUST METRICS STRIP */}
+      <TrustStatsSection />
 
-      {/* SECTION C: POPULAR VISA DESTINATIONS */}
-      <PopularVisasSection />
+      {/* 3. STYLED BOARDING PASS / E-TICKET BANNER */}
+      <BoardingPassBanner />
 
-      {/* SECTION D: FEATURED HOLIDAYS */}
+      {/* 4. DEALS & PACKAGES CAROUSEL/GRID (WITH CATEGORY PILLS) */}
       <FeaturedHolidaysSection />
 
-      {/* SECTION E: WHY CHOOSE US */}
-      <WhyChooseUsSection />
+      {/* 5. DESTINATION EXPLORER GRID (DOMESTIC & INTERNATIONAL TABS) */}
+      <DestinationExplorerSection />
 
-      {/* SECTION F: HOW IT WORKS */}
+      {/* 6. FOUR CORE SERVICES OVERVIEW */}
+      <CoreServicesSection />
+
+      {/* 7. 4-STEP "HOW IT WORKS" PROCESS */}
       <HowItWorksSection />
 
-      {/* SECTION G: DOCUMENTATION SERVICES */}
+      {/* 8. WHY CHOOSE US / VALUE PROPOSITIONS */}
+      <WhyChooseUsSection />
+
+      {/* 9. TRAVEL DOCUMENTATION (OTB, POE, HOTEL VOUCHERS) */}
       <DocumentationPreviewSection />
 
-      {/* SECTION H: CUSTOMER TESTIMONIALS */}
+      {/* 10. CUSTOMER TESTIMONIALS & REVIEWS */}
       <TestimonialsSection />
 
-      {/* SECTION I: FAQ */}
+      {/* 11. EXPANDABLE FAQ ACCORDION (VALIDITY, TIMELINES, SECURITY) */}
       <FaqSection />
 
-      {/* SECTION J: FINAL CTA */}
+      {/* 12. FINAL HIGH-CONVERTING WHATSAPP CTA */}
       <FinalCtaSection />
     </>
   );
