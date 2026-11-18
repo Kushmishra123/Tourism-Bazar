@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
+import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import { DEFAULT_SITE_METADATA } from '@/lib/seo';
 
 export const metadata = {
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
         <main className="flex-grow">{children}</main>
         <Footer />
         <FloatingWhatsApp />
+        <MobileBottomNav />
       </body>
     </html>
   );
