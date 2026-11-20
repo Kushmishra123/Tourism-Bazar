@@ -282,7 +282,7 @@ _Please assist with documentation verification, airline clearance, and requireme
         <div className="max-w-5xl mx-auto">
           
           {/* 1. HORIZONTAL ICON TAB BAR (TOP ROW OF SQUARE/ROUNDED-TOP CARDS) */}
-          <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+          <div className="grid grid-cols-4 gap-1 xs:gap-1.5 sm:gap-2 md:gap-2.5">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -290,16 +290,16 @@ _Please assist with documentation verification, airline clearance, and requireme
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex flex-col items-center justify-center text-center py-3.5 sm:py-4 px-2 sm:px-4 rounded-t-2xl sm:rounded-t-3xl transition-all duration-200 cursor-pointer ${
+                  className={`relative flex flex-col items-center justify-center text-center py-2.5 xs:py-3 sm:py-3.5 md:py-4 px-1 xs:px-1.5 sm:px-3 md:px-4 rounded-t-xl sm:rounded-t-2xl md:rounded-t-3xl transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-brand-navy text-white shadow-xl border-t-2 border-brand-yellow scale-[1.01] z-10'
                       : 'bg-white/95 hover:bg-white text-slate-700 hover:text-brand-navy border-t border-x border-slate-200/90 shadow-sm'
                   }`}
                 >
-                  <Icon className={`w-6 h-6 sm:w-7 sm:h-7 mb-1 sm:mb-1.5 shrink-0 ${
+                  <Icon className={`w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-0.5 sm:mb-1.5 shrink-0 ${
                     isActive ? 'text-brand-yellow stroke-[2.2]' : 'text-brand-navy stroke-[2]'
                   }`} />
-                  <span className={`text-xs sm:text-sm font-black tracking-tight leading-tight ${
+                  <span className={`text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-black tracking-tight leading-tight ${
                     isActive ? 'text-white' : 'text-slate-800'
                   }`}>
                     {tab.label}
@@ -310,14 +310,14 @@ _Please assist with documentation verification, airline clearance, and requireme
           </div>
 
           {/* 2. FORM CONTAINER (SEAMLESSLY CONNECTED CARD BELOW TABS) */}
-          <div className="bg-white rounded-b-2xl sm:rounded-b-3xl shadow-2xl border border-slate-200/90 p-5 sm:p-7 lg:p-8 space-y-6">
+          <div className="bg-white rounded-b-xl sm:rounded-b-2xl md:rounded-b-3xl shadow-2xl border border-slate-200/90 p-3.5 xs:p-4 sm:p-6 md:p-7 lg:p-8 space-y-4 sm:space-y-6">
 
             {/* TAB 1: DUMMY TICKET / FLIGHTS */}
             {activeTab === 'dummy-ticket' && (
-              <form onSubmit={handleDummyTicketSubmit} className="space-y-6">
+              <form onSubmit={handleDummyTicketSubmit} className="space-y-4 sm:space-y-6">
                 
                 {/* Pill-Shaped Radio Option Buttons (One Way, Round Trip, Multi City) */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
                   {['One Way', 'Round Trip', 'Multi City'].map((option) => {
                     const isSelected = flightSubOption === option;
                     return (
@@ -325,24 +325,24 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setFlightSubOption(option)}
-                        className={`rounded-full border-2 px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
                         }`}
                       >
                         {/* Custom Circular Radio Indicator */}
-                        <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected ? 'border-brand-navy' : 'border-slate-300'
                         }`}>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-brand-navy" />}
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
                         </span>
                         <span>{option}</span>
                       </button>
                     );
                   })}
 
-                  <div className="ml-auto hidden sm:flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full font-semibold border border-emerald-200">
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full font-semibold border border-emerald-200">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>100% Verifiable on Airline Websites</span>
                   </div>
@@ -532,10 +532,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 2: VISAS */}
             {activeTab === 'visas' && (
-              <form onSubmit={handleVisaSubmit} className="space-y-6">
+              <form onSubmit={handleVisaSubmit} className="space-y-4 sm:space-y-6">
                 
                 {/* Pill-Shaped Radio Option Buttons (Tourist Visa, Business Visa, Transit Visa) */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
                   {['Tourist Visa', 'Business Visa', 'Transit Visa'].map((option) => {
                     const isSelected = visaSubOption === option;
                     return (
@@ -543,23 +543,23 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setVisaSubOption(option)}
-                        className={`rounded-full border-2 px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
                         }`}
                       >
-                        <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected ? 'border-brand-navy' : 'border-slate-300'
                         }`}>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-brand-navy" />}
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
                         </span>
                         <span>{option}</span>
                       </button>
                     );
                   })}
 
-                  <div className="ml-auto hidden sm:flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
                     <Globe2 className="w-4 h-4 text-blue-600" />
                     <span>30+ Consular Desks Worldwide</span>
                   </div>
@@ -656,10 +656,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 3: HOLIDAYS */}
             {activeTab === 'holidays' && (
-              <form onSubmit={handleHolidaySubmit} className="space-y-6">
+              <form onSubmit={handleHolidaySubmit} className="space-y-4 sm:space-y-6">
                 
                 {/* Pill-Shaped Radio Option Buttons (International, Domestic, Umrah) */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
                   {['International', 'Domestic', 'Umrah'].map((option) => {
                     const isSelected = holidaySubOption === option;
                     return (
@@ -677,23 +677,23 @@ _Please assist with documentation verification, airline clearance, and requireme
                             setHolidayForm(prev => ({ ...prev, destination: internationalDestinations[0] }));
                           }
                         }}
-                        className={`rounded-full border-2 px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
                         }`}
                       >
-                        <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected ? 'border-brand-navy' : 'border-slate-300'
                         }`}>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-brand-navy" />}
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
                         </span>
                         <span>{option}</span>
                       </button>
                     );
                   })}
 
-                  <div className="ml-auto hidden sm:flex items-center gap-1.5 text-xs text-amber-800 bg-amber-50 px-3 py-1.5 rounded-full font-semibold border border-amber-200">
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-amber-800 bg-amber-50 px-3 py-1.5 rounded-full font-semibold border border-amber-200">
                     <Sparkles className="w-4 h-4 text-amber-600" />
                     <span>Best Price Guarantee & Verified Hotels</span>
                   </div>
@@ -793,10 +793,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 4: DOCUMENTATION */}
             {activeTab === 'documentation' && (
-              <form onSubmit={handleDocSubmit} className="space-y-6">
+              <form onSubmit={handleDocSubmit} className="space-y-4 sm:space-y-6">
                 
                 {/* Pill-Shaped Radio Option Buttons (OK to Board, POE Emigration, Hotel Voucher) */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
                   {['OK to Board (OTB)', 'POE Emigration', 'Hotel Voucher'].map((option) => {
                     const isSelected = docSubOption === option;
                     return (
@@ -804,23 +804,23 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setDocSubOption(option)}
-                        className={`rounded-full border-2 px-4 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
                         }`}
                       >
-                        <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected ? 'border-brand-navy' : 'border-slate-300'
                         }`}>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-brand-navy" />}
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
                         </span>
                         <span>{option}</span>
                       </button>
                     );
                   })}
 
-                  <div className="ml-auto hidden sm:flex items-center gap-1.5 text-xs text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full font-semibold border border-emerald-200">
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full font-semibold border border-emerald-200">
                     <FileCheck2 className="w-4 h-4 text-emerald-600" />
                     <span>Authorized Airline & Emigration Assistance</span>
                   </div>

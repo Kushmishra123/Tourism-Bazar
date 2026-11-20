@@ -46,11 +46,11 @@ export default function FloatingWhatsApp() {
   };
 
   return (
-    <div className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3 print:hidden">
+    <div className="fixed bottom-20 lg:bottom-6 right-3 xs:right-4 sm:right-6 z-50 flex flex-col items-end gap-3 print:hidden">
       
       {/* EXPANDABLE ASSISTANT DRAWER */}
       {isOpen && (
-        <div className="w-[90vw] sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="w-[calc(100vw-1.5rem)] xs:w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
           {/* Assistant Header */}
           <div className="bg-brand-navy p-4 text-white flex items-center justify-between border-b border-white/10">

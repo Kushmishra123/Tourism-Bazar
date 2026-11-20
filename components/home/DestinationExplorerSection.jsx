@@ -157,10 +157,10 @@ Hi Horizon Tourism team, I would like to explore packages, flights, and visa req
           </p>
 
           {/* Interactive Toggle Pill */}
-          <div className="inline-flex rounded-2xl bg-slate-100 p-1.5 border border-slate-200 mt-4 shadow-inner">
+          <div className="inline-flex flex-col xs:flex-row rounded-2xl bg-slate-100 p-1 sm:p-1.5 border border-slate-200 mt-4 shadow-inner max-w-full">
             <button
               onClick={() => setActiveTab('domestic')}
-              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                 activeTab === 'domestic'
                   ? 'bg-brand-navy text-white shadow-md'
                   : 'text-slate-600 hover:text-brand-navy'
@@ -170,7 +170,7 @@ Hi Horizon Tourism team, I would like to explore packages, flights, and visa req
             </button>
             <button
               onClick={() => setActiveTab('international')}
-              className={`px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                 activeTab === 'international'
                   ? 'bg-brand-navy text-white shadow-md'
                   : 'text-slate-600 hover:text-brand-navy'
@@ -182,12 +182,12 @@ Hi Horizon Tourism team, I would like to explore packages, flights, and visa req
         </div>
 
         {/* Visual Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {destinations.map((dest) => (
             <div
               key={dest.id}
               onClick={() => handleDestinationWhatsApp(dest)}
-              className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-slate-200"
+              className="group relative h-72 sm:h-80 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-slate-200"
             >
               {/* Background Photo */}
               <Image

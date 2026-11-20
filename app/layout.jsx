@@ -5,6 +5,13 @@ import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import { DEFAULT_SITE_METADATA } from '@/lib/seo';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#142B50',
+};
+
 export const metadata = {
   metadataBase: new URL(DEFAULT_SITE_METADATA.siteUrl),
   title: {
@@ -40,7 +47,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-slate-50 text-brand-dark antialiased selection:bg-brand-yellow selection:text-brand-dark">
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow pb-16 lg:pb-0">{children}</main>
         <Footer />
         <FloatingWhatsApp />
         <MobileBottomNav />

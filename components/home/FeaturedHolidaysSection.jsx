@@ -61,14 +61,14 @@ export default function FeaturedHolidaysSection() {
         </div>
 
         {/* Category Filter Pills (All, International, Domestic, Umrah) */}
-        <div className="flex flex-wrap items-center gap-2.5 mb-10 pb-2 border-b border-slate-200">
+        <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar pb-2 sm:flex-wrap mb-8 sm:mb-10 border-b border-slate-200">
           {filterPills.map((pill) => {
             const isActive = selectedCategory === pill.id;
             return (
               <button
                 key={pill.id}
                 onClick={() => setSelectedCategory(pill.id)}
-                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                className={`px-4 xs:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'bg-brand-navy text-white shadow-md shadow-brand-navy/20 scale-[1.02]'
                     : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-brand-navy border border-slate-200'
@@ -81,7 +81,7 @@ export default function FeaturedHolidaysSection() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredPackages.map((pkg) => (
             <div
               key={pkg.id}
