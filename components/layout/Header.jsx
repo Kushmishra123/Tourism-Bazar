@@ -76,65 +76,63 @@ export default function Header() {
                 : 'bg-brand-navy py-4'
               }`}
           >
-              <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-                <div className="flex items-center justify-between">
-                  {/* Brand Logo */}
-                  <Link
-                    href="/"
-                    className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-yellow rounded-lg"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-brand-yellow flex items-center justify-center text-brand-navy shadow-md shadow-brand-yellow/20 group-hover:scale-105 transition-transform duration-200">
-                      <Compass className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-white font-bold text-lg sm:text-xl tracking-tight leading-tight group-hover:text-brand-yellow transition-colors">
-                        Horizon Tourism
-                      </span>
-                      <span className="text-brand-yellow text-xs font-semibold tracking-wider uppercase">
-                        & Visas Co.
-                      </span>
-                    </div>
-                  </Link>
-
-                  {/* Desktop Navigation Links */}
-                  <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-                    {navLinks.map((link) => {
-                      const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-                      return (
-                        <Link
-                          key={link.name}
-                          href={link.href}
-                          className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                              ? 'text-brand-yellow bg-white/10 font-semibold'
-                              : 'text-slate-200 hover:text-white hover:bg-white/5'
-                            }`}
-                        >
-                          {link.name}
-                        </Link>
-                      );
-                    })}
-                  </nav>
-
-                  {/* Header Right Actions */}
-                  <div className="hidden sm:flex items-center gap-3">
-                    <button
-                      onClick={handleWhatsAppEnquiry}
-                      className="bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark px-4 py-2.5 rounded-lg text-sm font-bold shadow-md hover:shadow-brand-yellow/30 transition-all duration-200 flex items-center gap-2 group active:scale-95"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-brand-dark text-brand-yellow group-hover:scale-110 transition-transform" />
-                      <span>Enquire on WhatsApp</span>
-                    </button>
+              <div className="w-full max-w-full px-4 flex items-center justify-between gap-3">
+                {/* Brand Logo */}
+                <Link
+                  href="/"
+                  className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-yellow rounded-lg min-w-0"
+                >
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-yellow flex items-center justify-center text-brand-navy shadow-md shadow-brand-yellow/20 group-hover:scale-105 transition-transform duration-200 shrink-0">
+                    <Compass className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
                   </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-white font-bold text-base sm:text-xl tracking-tight leading-tight group-hover:text-brand-yellow transition-colors truncate">
+                      Horizon Tourism
+                    </span>
+                    <span className="text-brand-yellow text-[10px] sm:text-xs font-semibold tracking-wider uppercase truncate">
+                      & Visas Co.
+                    </span>
+                  </div>
+                </Link>
 
-                  {/* Mobile Hamburger Button */}
+                {/* Desktop Navigation Links */}
+                <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                    return (
+                      <Link
+                        key={link.name}
+                        href={link.href}
+                        className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                            ? 'text-brand-yellow bg-white/10 font-semibold'
+                            : 'text-slate-200 hover:text-white hover:bg-white/5'
+                          }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </nav>
+
+                {/* Header Right Actions */}
+                <div className="hidden sm:flex items-center gap-3 shrink-0">
                   <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="lg:hidden p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    aria-label="Toggle mobile menu"
+                    onClick={handleWhatsAppEnquiry}
+                    className="bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark px-4 py-2.5 rounded-lg text-sm font-bold shadow-md hover:shadow-brand-yellow/30 transition-all duration-200 flex items-center gap-2 group active:scale-95"
                   >
-                    {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    <MessageCircle className="w-4 h-4 fill-brand-dark text-brand-yellow group-hover:scale-110 transition-transform" />
+                    <span>Enquire on WhatsApp</span>
                   </button>
                 </div>
+
+                {/* Mobile Hamburger Button */}
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="lg:hidden p-2 sm:p-2.5 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-yellow shrink-0"
+                  aria-label="Toggle mobile menu"
+                >
+                  {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
               </div>
 
               {/* Mobile Navigation Menu Dropdown */}

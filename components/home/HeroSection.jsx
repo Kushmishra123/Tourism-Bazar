@@ -256,33 +256,33 @@ _Please assist with documentation verification, airline clearance, and requireme
         <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-full">
         {/* Top Header / Social Proof Strip */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-brand-yellow/30 text-white text-xs sm:text-sm font-semibold shadow-inner">
-            <span className="flex h-2 w-2 rounded-full bg-brand-yellow animate-pulse" />
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8 sm:mb-10 w-full max-w-full px-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-brand-yellow/30 text-white text-xs font-semibold shadow-inner flex-wrap justify-center text-center max-w-full">
+            <span className="flex h-2 w-2 rounded-full bg-brand-yellow animate-pulse shrink-0" />
             <span className="text-brand-yellow font-bold">★ 4.9/5 Rating</span>
             <span className="text-slate-400">•</span>
             <span>15,000+ Verifiable PNRs & Visas Assisted</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12] w-full max-w-full">
             Fly Smarter. Apply Faster.{' '}
             <span className="text-brand-yellow underline decoration-brand-yellow/40 decoration-wavy decoration-2">
               Travel Confidently.
             </span>
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed w-full max-w-full">
             Get instant verifiable flight itineraries (dummy tickets), seamless tourist & business visa consultation across 30+ countries, and curated holiday packages.
           </p>
         </div>
 
         {/* ================= EXACT BOOKING WIDGET UI PATTERN ================= */}
-        <div className="max-w-5xl mx-auto">
+        <div className="w-full max-w-full sm:max-w-5xl mx-auto px-0 sm:px-4">
           
           {/* 1. HORIZONTAL ICON TAB BAR (TOP ROW OF SQUARE/ROUNDED-TOP CARDS) */}
-          <div className="grid grid-cols-4 gap-1 xs:gap-1.5 sm:gap-2 md:gap-2.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-full">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -290,16 +290,16 @@ _Please assist with documentation verification, airline clearance, and requireme
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex flex-col items-center justify-center text-center py-2.5 xs:py-3 sm:py-3.5 md:py-4 px-1 xs:px-1.5 sm:px-3 md:px-4 rounded-t-xl sm:rounded-t-2xl md:rounded-t-3xl transition-all duration-200 cursor-pointer ${
+                  className={`relative flex flex-col items-center justify-center text-center py-2.5 sm:py-3.5 md:py-4 px-2 sm:px-3 md:px-4 rounded-xl sm:rounded-t-2xl md:rounded-t-3xl transition-all duration-200 cursor-pointer w-full ${
                     isActive
-                      ? 'bg-brand-navy text-white shadow-xl border-t-2 border-brand-yellow scale-[1.01] z-10'
-                      : 'bg-white/95 hover:bg-white text-slate-700 hover:text-brand-navy border-t border-x border-slate-200/90 shadow-sm'
+                      ? 'bg-brand-navy text-white shadow-xl border-2 sm:border-b-0 border-brand-yellow z-10'
+                      : 'bg-white/95 hover:bg-white text-slate-700 hover:text-brand-navy border border-slate-200/90 shadow-sm'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 xs:w-5.5 xs:h-5.5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-0.5 sm:mb-1.5 shrink-0 ${
+                  <Icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1 shrink-0 ${
                     isActive ? 'text-brand-yellow stroke-[2.2]' : 'text-brand-navy stroke-[2]'
                   }`} />
-                  <span className={`text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-black tracking-tight leading-tight ${
+                  <span className={`text-xs sm:text-sm font-black tracking-tight leading-tight ${
                     isActive ? 'text-white' : 'text-slate-800'
                   }`}>
                     {tab.label}
@@ -310,14 +310,14 @@ _Please assist with documentation verification, airline clearance, and requireme
           </div>
 
           {/* 2. FORM CONTAINER (SEAMLESSLY CONNECTED CARD BELOW TABS) */}
-          <div className="bg-white rounded-b-xl sm:rounded-b-2xl md:rounded-b-3xl shadow-2xl border border-slate-200/90 p-3.5 xs:p-4 sm:p-6 md:p-7 lg:p-8 space-y-4 sm:space-y-6">
+          <div className="w-full max-w-full mx-auto bg-white rounded-xl sm:rounded-b-2xl md:rounded-b-3xl shadow-2xl border border-slate-200/90 p-4 sm:p-6 md:p-7 lg:p-8 space-y-4 sm:space-y-6 mt-2 sm:mt-0">
 
             {/* TAB 1: DUMMY TICKET / FLIGHTS */}
             {activeTab === 'dummy-ticket' && (
-              <form onSubmit={handleDummyTicketSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleDummyTicketSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
                 
                 {/* Pill-Shaped Radio Option Buttons (One Way, Round Trip, Multi City) */}
-                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
                   {['One Way', 'Round Trip', 'Multi City'].map((option) => {
                     const isSelected = flightSubOption === option;
                     return (
@@ -325,7 +325,7 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setFlightSubOption(option)}
-                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
@@ -532,10 +532,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 2: VISAS */}
             {activeTab === 'visas' && (
-              <form onSubmit={handleVisaSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleVisaSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
                 
                 {/* Pill-Shaped Radio Option Buttons (Tourist Visa, Business Visa, Transit Visa) */}
-                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
                   {['Tourist Visa', 'Business Visa', 'Transit Visa'].map((option) => {
                     const isSelected = visaSubOption === option;
                     return (
@@ -543,7 +543,7 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setVisaSubOption(option)}
-                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
@@ -656,10 +656,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 3: HOLIDAYS */}
             {activeTab === 'holidays' && (
-              <form onSubmit={handleHolidaySubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleHolidaySubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
                 
                 {/* Pill-Shaped Radio Option Buttons (International, Domestic, Umrah) */}
-                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
                   {['International', 'Domestic', 'Umrah'].map((option) => {
                     const isSelected = holidaySubOption === option;
                     return (
@@ -677,7 +677,7 @@ _Please assist with documentation verification, airline clearance, and requireme
                             setHolidayForm(prev => ({ ...prev, destination: internationalDestinations[0] }));
                           }
                         }}
-                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
@@ -793,10 +793,10 @@ _Please assist with documentation verification, airline clearance, and requireme
 
             {/* TAB 4: DOCUMENTATION */}
             {activeTab === 'documentation' && (
-              <form onSubmit={handleDocSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleDocSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
                 
                 {/* Pill-Shaped Radio Option Buttons (OK to Board, POE Emigration, Hotel Voucher) */}
-                <div className="flex flex-wrap items-center gap-1.5 xs:gap-2 sm:gap-2.5 md:gap-3 pb-3 sm:pb-4 border-b border-slate-100">
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
                   {['OK to Board (OTB)', 'POE Emigration', 'Hotel Voucher'].map((option) => {
                     const isSelected = docSubOption === option;
                     return (
@@ -804,7 +804,7 @@ _Please assist with documentation verification, airline clearance, and requireme
                         key={option}
                         type="button"
                         onClick={() => setDocSubOption(option)}
-                        className={`rounded-full border-2 px-3 py-1.5 xs:px-3.5 xs:py-2 sm:px-4 sm:py-2 md:px-5 md:py-2.5 flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 text-[11px] xs:text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
                           isSelected
                             ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
                             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
@@ -995,22 +995,22 @@ _Please assist with documentation verification, airline clearance, and requireme
           </div>
 
           {/* Bottom Fast Trust Signals Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 text-slate-200 text-xs">
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 rounded-xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mt-6 text-slate-200 text-xs w-full max-w-full">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span>Verifiable PNRs</span>
+              <span className="truncate">Verifiable PNRs</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 rounded-xl">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span>30+ Visa Countries</span>
+              <span className="truncate">30+ Visa Countries</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 rounded-xl">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span>15–30 Min Turnaround</span>
+              <span className="truncate">15–30 Min Turnaround</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 rounded-xl">
+            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span>24x7 WhatsApp Advisory</span>
+              <span className="truncate">24x7 WhatsApp Advisory</span>
             </div>
           </div>
 
