@@ -244,8 +244,8 @@ _Please assist with documentation verification, airline clearance, and requireme
       {/* Atmospheric Soft-Blurred Aviation/Sunset Sky Background with Deep Navy Gradient */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=1920&auto=format&fit=crop"
-          alt="Atmospheric sunset sky and aviation flights"
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop"
+          alt="International travel and flights"
           fill
           priority
           sizes="100vw"
