@@ -117,7 +117,7 @@ export default function DocumentationDetailView({ service }) {
               <input
                 type="tel"
                 required
-                placeholder="e.g. +91 98765 43210"
+                placeholder="e.g. +91 8750737086"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-yellow/50"

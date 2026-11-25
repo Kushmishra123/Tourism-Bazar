@@ -33,7 +33,7 @@ export default function PopularVisasSection() {
             href="/visas"
             className="inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-navy-light text-white font-semibold px-5 py-3 rounded-xl text-sm transition-all shadow-md self-start md:self-auto shrink-0"
           >
-            <span>View All 30+ Countries</span>
+            <span>View All 35 Countries</span>
             <ArrowRight className="w-4 h-4 text-brand-yellow" />
           </Link>
         </div>

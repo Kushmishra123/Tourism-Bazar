@@ -158,7 +158,7 @@ Hi Horizon Tourism team, I would like to turn my travel idea into reality. Pleas
                 <div className="space-y-2.5 sm:space-y-3 text-xs">
                   <div>
                     <span className="text-[10px] uppercase font-bold text-slate-400">Destination</span>
-                    <p className="font-bold text-brand-navy text-xs sm:text-sm">30+ Global Destinations</p>
+                    <p className="font-bold text-brand-navy text-xs sm:text-sm">35 Global Destinations</p>
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-bold text-slate-400">Services Included</span>

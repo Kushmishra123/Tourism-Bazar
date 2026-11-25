@@ -246,7 +246,7 @@ export default function DummyTicketForm() {
               </label>
               <input
                 type="tel"
-                placeholder="e.g. +91 98765 43210"
+                placeholder="e.g. +91 8750737086"
                 value={formData.whatsapp}
                 onChange={(e) => handleInputChange('whatsapp', e.target.value)}
                 className={`w-full bg-white border rounded-xl px-3.5 py-3 text-sm text-brand-dark transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 ${

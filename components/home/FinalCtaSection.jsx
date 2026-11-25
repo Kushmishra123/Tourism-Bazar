@@ -41,7 +41,7 @@ export default function FinalCtaSection() {
           </button>
 
           <a
-            href="tel:+919876543210"
+            href={`tel:${WHATSAPP_CONFIG.phoneNumber}`}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-7 py-4 rounded-xl text-base font-semibold transition-all duration-200"
           >
             <PhoneCall className="w-5 h-5 text-brand-yellow" />

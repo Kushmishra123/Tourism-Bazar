@@ -272,7 +272,7 @@ _Please assist with documentation verification, airline clearance, and requireme
           <div className="flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold tracking-wider text-slate-200 uppercase">
             <span>HORIZON TOURISM &amp; VISAS</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#FACC15]" />
-            <span className="text-[#FACC15]">29+ COUNTRIES DIRECT DESK</span>
+            <span className="text-[#FACC15]">35 COUNTRIES DIRECT DESK</span>
           </div>
 
           {/* Main Headline */}
@@ -285,7 +285,7 @@ _Please assist with documentation verification, airline clearance, and requireme
 
           {/* Concise 2-line Subtitle */}
           <p className="text-slate-200 text-xs sm:text-sm md:text-base font-normal max-w-xl mx-auto leading-relaxed">
-            29+ Countries • Visas, E-Visas &amp; Clearance Services, plus verifiable void tickets quoted on WhatsApp in minutes.
+            35 Countries • Visas, E-Visas &amp; Clearance Services, plus verifiable void tickets quoted on WhatsApp in minutes.
           </p>
         </div>
 
@@ -354,7 +354,7 @@ _Please assist with documentation verification, airline clearance, and requireme
 
                   <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
                     <Globe2 className="w-4 h-4 text-blue-600" />
-                    <span>29+ Countries &amp; Specialized Desks</span>
+                    <span>35 Countries &amp; Specialized Desks</span>
                   </div>
                 </div>
 
@@ -1019,7 +1019,7 @@ _Please assist with documentation verification, airline clearance, and requireme
             </div>
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span className="truncate">29+ Countries &amp; Clearances</span>
+              <span className="truncate">35 Countries &amp; Clearances</span>
             </div>
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />

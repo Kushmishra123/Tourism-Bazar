@@ -8,7 +8,7 @@ export default function Footer() {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Void Ticket for Visa', href: '/void-ticket' },
-    { name: 'Visa Services (29+ Countries)', href: '/visas' },
+    { name: 'Visa Services (35 Countries)', href: '/visas' },
     { name: 'Holiday Packages', href: '/holidays' },
     { name: 'Travel Documentation', href: '/documentation' },
     { name: 'Contact & Support', href: '/contact' },
@@ -60,7 +60,7 @@ export default function Footer() {
               </Link>
 
               <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
-                Your dependable partner for verifiable flight itineraries, tourist & business visa consultation across 30+ destinations, Umrah & holiday packages, and essential travel documentation.
+                Your dependable partner for verifiable flight itineraries, tourist & business visa consultation across 35 countries, Umrah & holiday packages, and essential travel documentation.
               </p>
 
               <div className="pt-2">
@@ -128,7 +128,7 @@ export default function Footer() {
                 <div className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-brand-yellow shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">{WHATSAPP_CONFIG.displayNumber}</p>
+                    <a href={`tel:${WHATSAPP_CONFIG.phoneNumber}`} className="text-white font-medium hover:text-brand-yellow transition-colors">{WHATSAPP_CONFIG.displayNumber}</a>
                     <p className="text-xs text-slate-400">Available on Call & WhatsApp</p>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ export default function Footer() {
                 <div className="flex items-start gap-3">
                   <Mail className="w-4 h-4 text-brand-yellow shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">{WHATSAPP_CONFIG.email}</p>
+                    <a href={`mailto:${WHATSAPP_CONFIG.email}`} className="text-white font-medium hover:text-brand-yellow transition-colors">{WHATSAPP_CONFIG.email}</a>
                     <p className="text-xs text-slate-400">Enquiries & Documentation</p>
                   </div>
                 </div>

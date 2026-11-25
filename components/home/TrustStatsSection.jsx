@@ -6,7 +6,7 @@ export default function TrustStatsSection() {
   const metrics = [
     {
       icon: Globe,
-      number: "30+",
+      number: "35",
       label: "Visa Destinations",
       sublabel: "Embassy & Consular compliant dossiers",
       accent: "text-brand-yellow",

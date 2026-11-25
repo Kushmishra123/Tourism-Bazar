@@ -9,7 +9,7 @@ export default function WhyChooseUsSection() {
     },
     {
       icon: Globe,
-      title: "Assistance Across 30+ Visa Destinations",
+      title: "Assistance Across 35 Countries",
       description: "Extensive knowledge of consular requirements, e-visa protocols, and document specifications for Asia, Middle East, Europe, and the Americas.",
     },
     {

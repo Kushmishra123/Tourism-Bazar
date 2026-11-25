@@ -80,7 +80,7 @@ export default function ContactForm() {
             </label>
             <input
               type="tel"
-              placeholder="e.g. +91 98765 43210"
+              placeholder="e.g. +91 8750737086"
               value={formData.phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
               className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-sm text-brand-dark transition-all focus:outline-none focus:ring-2 focus:ring-brand-yellow/50 ${

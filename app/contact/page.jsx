@@ -53,7 +53,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">WhatsApp & Telephone</span>
-                    <span className="font-bold text-white text-base">{WHATSAPP_CONFIG.displayNumber}</span>
+                    <a href={`tel:${WHATSAPP_CONFIG.phoneNumber}`} className="font-bold text-white text-base hover:text-brand-yellow transition-colors">
+                      {WHATSAPP_CONFIG.displayNumber}
+                    </a>
                   </div>
                 </div>
 
@@ -63,7 +65,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">Email Enquiries</span>
-                    <span className="font-bold text-white">{WHATSAPP_CONFIG.email}</span>
+                    <a href={`mailto:${WHATSAPP_CONFIG.email}`} className="font-bold text-white hover:text-brand-yellow transition-colors">
+                      {WHATSAPP_CONFIG.email}
+                    </a>
                   </div>
                 </div>
 

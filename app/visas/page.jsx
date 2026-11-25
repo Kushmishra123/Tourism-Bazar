@@ -3,8 +3,8 @@ import { buildMetadata } from '@/lib/seo';
 import { Globe2, ShieldCheck, FileCheck, CheckCircle2 } from 'lucide-react';
 
 export const metadata = buildMetadata({
-  title: "Visa Services | Tourist & Business Visa Assistance for 30+ Countries",
-  description: "Explore tourist, business, and visit visa services across 30+ global destinations. Expert document checklists, application review, and direct WhatsApp assistance.",
+  title: "Visa Services | Tourist & Business Visa Assistance for 35 Countries",
+  description: "Explore tourist, business, and visit visa services across 35 global destinations. Expert document checklists, application review, and direct WhatsApp assistance.",
   path: "/visas",
 });
 
@@ -20,11 +20,11 @@ export default function VisasPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight leading-tight">
-            Tourist & Business Visa Services
+            Tourist &amp; Business Visa Services
           </h1>
 
           <p className="text-base sm:text-lg text-brand-muted leading-relaxed">
-            Professional visa guidance and application facilitation across more than 30 destinations worldwide. Select your destination below to view available visa categories and document requirements.
+            Professional visa guidance and application facilitation across 35 destinations worldwide. Select your destination below to view available visa categories and document requirements.
           </p>
         </div>
 

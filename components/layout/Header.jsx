@@ -58,9 +58,9 @@ export default function Header() {
             <div className="bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full text-[11px] sm:text-xs text-slate-200 flex items-center gap-1.5 truncate shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <MapPin className="w-3 h-3 text-brand-yellow shrink-0" />
-              <span className="font-semibold text-white">New Delhi</span>
+              <span className="font-semibold text-white">Nizamuddin West, Delhi</span>
               <span className="text-white/40">|</span>
-              <span className="truncate">29+ Countries Visa &amp; PNR Desk</span>
+              <span className="truncate">35 Countries Visa &amp; PNR Desk</span>
             </div>
           </div>
 
