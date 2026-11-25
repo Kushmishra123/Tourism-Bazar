@@ -240,49 +240,54 @@ _Please assist with documentation verification, airline clearance, and requireme
   ];
 
   return (
-    <section className="relative min-h-[740px] lg:min-h-[820px] flex items-center justify-center bg-brand-navy overflow-hidden py-12 lg:py-16">
-      {/* Background Image with Dark Navy Gradient Overlay */}
+    <section className="relative min-h-[720px] lg:min-h-[800px] flex items-center justify-center overflow-hidden pt-6 pb-12 lg:pt-8 lg:pb-16">
+      {/* Atmospheric Soft-Blurred Aviation/Sunset Sky Background with Deep Navy Gradient */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1920&auto=format&fit=crop"
-          alt="International travel and flights"
+          src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=1920&auto=format&fit=crop"
+          alt="Atmospheric sunset sky and aviation flights"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center mix-blend-overlay opacity-30"
+          className="object-cover object-center filter blur-[1px] brightness-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy-dark/95 via-brand-navy/90 to-brand-navy-dark" />
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-yellow/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
+        {/* Deep navy/indigo gradient tint so white text pops cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0C1B33]/90 via-[#142B50]/80 to-[#0C1B33]/95" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-brand-yellow/15 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-full">
-        {/* Top Header / Social Proof Strip */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8 sm:mb-10 w-full max-w-full px-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-brand-yellow/30 text-white text-xs font-semibold shadow-inner flex-wrap justify-center text-center max-w-full">
-            <span className="flex h-2 w-2 rounded-full bg-brand-yellow animate-pulse shrink-0" />
-            <span className="text-brand-yellow font-bold">★ 4.9/5 Rating</span>
-            <span className="text-slate-400">•</span>
-            <span>15,000+ Verifiable PNRs & Visas Assisted</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full max-w-full">
+        
+        {/* 3. FROSTED GLASSMORPHIC HERO CARD */}
+        <div className="bg-white/15 backdrop-blur-md border border-white/25 rounded-3xl p-5 sm:p-7 md:p-9 shadow-xl max-w-3xl mx-auto mb-6 sm:mb-8 text-center text-white space-y-3">
+          
+          {/* Top row: two uppercase micro-labels separated by a small yellow dot */}
+          <div className="flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold tracking-wider text-slate-200 uppercase">
+            <span>HORIZON TOURISM &amp; VISAS</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FACC15]" />
+            <span className="text-[#FACC15]">4.9★ VERIFIED DESK</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12] w-full max-w-full">
-            Fly Smarter. Apply Faster.{' '}
-            <span className="text-brand-yellow underline decoration-brand-yellow/40 decoration-wavy decoration-2">
+          {/* Main Headline */}
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.15]">
+            Fly Smarter,{' '}
+            <span className="text-[#FACC15]">
               Travel Confidently.
             </span>
           </h1>
 
-          <p className="text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed w-full max-w-full">
-            Get instant verifiable flight itineraries (dummy tickets), seamless tourist & business visa consultation across 30+ countries, and curated holiday packages.
+          {/* Concise 2-line Subtitle */}
+          <p className="text-slate-200 text-xs sm:text-sm md:text-base font-normal max-w-xl mx-auto leading-relaxed">
+            Verifiable flight itineraries and international visa consultation across 30+ countries, quoted on WhatsApp in minutes.
           </p>
         </div>
 
-        {/* ================= EXACT BOOKING WIDGET UI PATTERN ================= */}
-        <div className="w-full max-w-full sm:max-w-5xl mx-auto px-0 sm:px-4">
+        {/* ================= 4. COMPACT SQUARE APP-STYLE SERVICE TABS & BOOKING CARD ================= */}
+        <div className="w-full max-w-full sm:max-w-4xl mx-auto px-0 sm:px-2">
           
-          {/* 1. HORIZONTAL ICON TAB BAR (TOP ROW OF SQUARE/ROUNDED-TOP CARDS) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full max-w-full">
+          {/* Top Row: 4 Equal-Width Compact Rounded-t-2xl Square Cards */}
+          <div className="grid grid-cols-4 gap-1 sm:gap-2 w-full max-w-full">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -290,16 +295,16 @@ _Please assist with documentation verification, airline clearance, and requireme
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex flex-col items-center justify-center text-center py-2.5 sm:py-3.5 md:py-4 px-2 sm:px-3 md:px-4 rounded-xl sm:rounded-t-2xl md:rounded-t-3xl transition-all duration-200 cursor-pointer w-full ${
+                  className={`relative flex flex-col items-center justify-center text-center py-2 sm:py-3.5 px-1 sm:px-3 rounded-t-2xl transition-all duration-200 cursor-pointer w-full ${
                     isActive
-                      ? 'bg-brand-navy text-white shadow-xl border-2 sm:border-b-0 border-brand-yellow z-10'
-                      : 'bg-white/95 hover:bg-white text-slate-700 hover:text-brand-navy border border-slate-200/90 shadow-sm'
+                      ? 'bg-[#0C1B33] text-white shadow-xl border-b-4 border-[#FACC15] z-10'
+                      : 'bg-white/95 hover:bg-white text-slate-700 hover:text-brand-navy border border-b-0 border-slate-200/80 shadow-sm'
                   }`}
                 >
-                  <Icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mb-1 shrink-0 ${
-                    isActive ? 'text-brand-yellow stroke-[2.2]' : 'text-brand-navy stroke-[2]'
+                  <Icon className={`w-5 h-5 sm:w-6 sm:h-6 mb-1 shrink-0 ${
+                    isActive ? 'text-white stroke-[2.2]' : 'text-[#0C1B33] stroke-[2]'
                   }`} />
-                  <span className={`text-xs sm:text-sm font-black tracking-tight leading-tight ${
+                  <span className={`text-[10px] xs:text-xs sm:text-sm font-black tracking-tight leading-tight truncate max-w-full ${
                     isActive ? 'text-white' : 'text-slate-800'
                   }`}>
                     {tab.label}
@@ -309,8 +314,8 @@ _Please assist with documentation verification, airline clearance, and requireme
             })}
           </div>
 
-          {/* 2. FORM CONTAINER (SEAMLESSLY CONNECTED CARD BELOW TABS) */}
-          <div className="w-full max-w-full mx-auto bg-white rounded-xl sm:rounded-b-2xl md:rounded-b-3xl shadow-2xl border border-slate-200/90 p-4 sm:p-6 md:p-7 lg:p-8 space-y-4 sm:space-y-6 mt-2 sm:mt-0">
+          {/* Connected White Booking Card */}
+          <div className="w-full max-w-full mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-6">
 
             {/* TAB 1: DUMMY TICKET / FLIGHTS */}
             {activeTab === 'dummy-ticket' && (

@@ -46,7 +46,7 @@ export default function FloatingWhatsApp() {
   };
 
   return (
-    <div className="fixed bottom-20 lg:bottom-6 right-3 xs:right-4 sm:right-6 z-50 flex flex-col items-end gap-3 print:hidden">
+    <div className="fixed bottom-16 sm:bottom-20 lg:bottom-6 right-2 sm:right-6 z-50 flex flex-col items-end gap-2.5 print:hidden max-w-[calc(100vw-1rem)]">
       
       {/* EXPANDABLE ASSISTANT DRAWER */}
       {isOpen && (
@@ -131,49 +131,53 @@ export default function FloatingWhatsApp() {
         </div>
       )}
 
-      {/* FLOATING PROMPT PILL (Visible when drawer is closed) */}
-      {!isOpen && !tooltipDismissed && (
-        <div 
-          onClick={() => setIsOpen(true)}
-          className="cursor-pointer hidden sm:flex items-center gap-2 bg-brand-navy-dark text-white text-xs px-4 py-2.5 rounded-2xl shadow-2xl border border-brand-yellow/40 max-w-xs animate-in fade-in slide-in-from-bottom-2 duration-300 hover:scale-[1.02] transition-transform"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-          <span className="font-semibold leading-tight text-slate-100">
-            Need help planning a trip? <span className="text-brand-yellow underline">Chat now!</span>
-          </span>
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              setTooltipDismissed(true);
-            }}
-            className="text-slate-400 hover:text-white ml-2 p-1 rounded-md hover:bg-white/10"
-            aria-label="Dismiss prompt"
+      {/* 5. FLOATING PROMPT & ACTION BAR (White pill flanked by Assistant badge and green WhatsApp button) */}
+      {!isOpen && (
+        <div className="flex items-center gap-1.5 sm:gap-2 max-w-full">
+          {/* Left: Dark Navy/Yellow Assistant Badge */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-tr from-[#0C1B33] via-[#142B50] to-[#1B3B6F] border-2 border-brand-yellow/60 text-brand-yellow flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
+            aria-label="Open travel assistant"
           >
-            <X className="w-3.5 h-3.5" />
+            <Sparkles className="w-5 h-5 fill-brand-yellow text-brand-yellow" />
+          </button>
+
+          {/* Center: Clean White Pill */}
+          <button
+            onClick={() => setIsOpen(true)}
+            className="bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-bold px-3 sm:px-4 py-2 sm:py-2.5 rounded-full shadow-lg border border-slate-200/90 hover:border-brand-navy/30 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-[0.98]"
+          >
+            <span>Need help planning a trip?</span>
+          </button>
+
+          {/* Right: Circular Green WhatsApp Icon Button */}
+          <button
+            onClick={handleOpenDirectChat}
+            className="group relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-lg hover:shadow-[#25D366]/40 transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0"
+            aria-label="Open direct WhatsApp chat"
+          >
+            <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-yellow opacity-75" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-brand-yellow text-[8px] font-black text-brand-dark items-center justify-center">
+                1
+              </span>
+            </span>
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-white text-[#25D366]" />
           </button>
         </div>
       )}
 
-      {/* FLOATING ACTION BUTTON */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="group relative flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl hover:shadow-[#25D366]/40 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 cursor-pointer"
-        aria-label="Open Horizon Tourism WhatsApp Assistant"
-      >
-        {!isOpen ? (
-          <>
-            <span className="absolute -top-1 -right-1 flex h-4 w-4">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-yellow opacity-75" />
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-brand-yellow text-[9px] font-bold text-brand-dark items-center justify-center">
-                1
-              </span>
-            </span>
-            <MessageCircle className="w-7 h-7 fill-white text-[#25D366] transition-transform group-hover:scale-110" />
-          </>
-        ) : (
-          <X className="w-6 h-6 stroke-[2.5]" />
-        )}
-      </button>
+      {/* Close button when drawer is open */}
+      {isOpen && (
+        <button
+          onClick={() => setIsOpen(false)}
+          className="flex items-center justify-center w-11 h-11 bg-slate-800 hover:bg-slate-900 text-white rounded-full shadow-xl transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          aria-label="Close assistant"
+        >
+          <X className="w-5 h-5 stroke-[2.5]" />
+        </button>
+      )}
 
     </div>
   );
