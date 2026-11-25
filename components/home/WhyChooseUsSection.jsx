@@ -5,7 +5,7 @@ export default function WhyChooseUsSection() {
     {
       icon: Layers,
       title: "Multiple Travel Services Under One Roof",
-      description: "From dummy tickets and visa paperwork to curated holiday itineraries and OTB clearance, manage your entire travel workflow with a single trusted partner.",
+      description: "From void tickets and visa paperwork to curated holiday itineraries and OTB clearance, manage your entire travel workflow with a single trusted partner.",
     },
     {
       icon: Globe,

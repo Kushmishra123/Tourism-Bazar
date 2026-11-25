@@ -21,17 +21,18 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { WHATSAPP_CONFIG, buildWhatsAppUrl } from '@/lib/whatsapp';
+import { countries } from '@/data/countries';
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState('dummy-ticket');
+  const [activeTab, setActiveTab] = useState('visas');
 
   // Pill Sub-options state per tab
   const [flightSubOption, setFlightSubOption] = useState('One Way');
-  const [visaSubOption, setVisaSubOption] = useState('Tourist Visa');
+  const [visaSubOption, setVisaSubOption] = useState('All Options');
   const [holidaySubOption, setHolidaySubOption] = useState('International');
   const [docSubOption, setDocSubOption] = useState('OK to Board (OTB)');
 
-  // Dummy Ticket / Flights form state
+  // Void Ticket / Flights form state
   const [dummyForm, setDummyForm] = useState({
     from: 'DEL - New Delhi, India',
     to: 'DXB - Dubai, UAE',
@@ -49,11 +50,31 @@ export default function HeroSection() {
 
   // Visa form state
   const [visaForm, setVisaForm] = useState({
-    country: 'Dubai / UAE',
+    country: 'UAE',
+    selectedOption: 'Tourist Visa – 30 Days',
     travellers: '1 Traveller',
     travelMonth: 'Within next 15-30 days',
-    entryType: 'Single Entry',
   });
+
+  const handleCountryChange = (countryName) => {
+    const selected = countries.find(c => c.name === countryName);
+    const defaultOption = selected?.visas[0]?.title || '';
+    setVisaForm(prev => ({
+      ...prev,
+      country: countryName,
+      selectedOption: defaultOption,
+    }));
+  };
+
+  const selectedCountryObj = countries.find(c => c.name === visaForm.country) || countries.find(c => c.name === 'UAE') || countries[0];
+  const currentVisaOptions = selectedCountryObj?.visas || [];
+
+  // Filter options based on sub-option filter if user clicks pill
+  const filteredVisaOptions = visaSubOption === 'Visas Only'
+    ? currentVisaOptions.filter(v => v.category !== 'service')
+    : visaSubOption === 'Services Only'
+      ? currentVisaOptions.filter(v => v.category === 'service')
+      : currentVisaOptions;
 
   // Holidays form state
   const [holidayForm, setHolidayForm] = useState({
@@ -92,21 +113,6 @@ export default function HeroSection() {
     { code: 'KUL', name: 'KUL - Kuala Lumpur, Malaysia' },
   ];
 
-  const popularVisaCountries = [
-    'Dubai / UAE',
-    'Thailand',
-    'Saudi Arabia (Umrah / Tourist)',
-    'Schengen Europe',
-    'Singapore',
-    'Vietnam',
-    'United Kingdom',
-    'United States (USA)',
-    'Azerbaijan (Baku)',
-    'Malaysia',
-    'Indonesia (Bali)',
-    'Turkey (Türkiye)',
-  ];
-
   // Dynamic holiday destinations per sub-category
   const internationalDestinations = [
     'Dubai Grand Explorer & Desert Safari',
@@ -132,7 +138,7 @@ export default function HeroSection() {
   ];
 
   // ================= Form Submissions with WhatsApp Conversion =================
-  const handleDummyTicketSubmit = (e) => {
+  const handleVoidTicketSubmit = (e) => {
     e.preventDefault();
     let flightDetails = '';
 
@@ -150,15 +156,15 @@ export default function HeroSection() {
 📅 *Departure Date:* ${dummyForm.departDate || 'Immediate / Flexible'}${returnDateStr}`;
     }
 
-    const message = `✈️ *DUMMY TICKET / FLIGHT ENQUIRY*
+    const message = `✈️ *VOID TICKET / FLIGHT ITINERARY ENQUIRY*
 ━━━━━━━━━━━━━━━━━━━━
-📌 *Service:* Verifiable Flight Itinerary for Visa
+📌 *Service:* Verifiable Void Ticket / Flight Itinerary for Visa
 🔄 *Trip Type:* ${flightSubOption}${flightDetails}
 👥 *Passengers:* ${dummyForm.passengers}
 💺 *Class:* ${dummyForm.cabinClass}
 
 ━━━━━━━━━━━━━━━━━━━━
-_Enquiry from Tourism-Bazar Hero Booking Widget_
+_Enquiry from Horizon Tourism & Visas Portal_
 _Please share available flight combinations with verifiable PNR and instant quote._`;
 
     window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
@@ -166,16 +172,16 @@ _Please share available flight combinations with verifiable PNR and instant quot
 
   const handleVisaSubmit = (e) => {
     e.preventDefault();
-    const message = `🛂 *VISA CONSULTATION ENQUIRY*
+    const message = `🛂 *VISA / CLEARANCE SERVICE ENQUIRY*
 ━━━━━━━━━━━━━━━━━━━━
-🌍 *Country:* ${visaForm.country}
-📄 *Visa Category:* ${visaSubOption} (${visaForm.entryType})
+🌍 *Destination Country:* ${visaForm.country}
+📄 *Visa / Service Selected:* ${visaForm.selectedOption}
 👥 *Travellers Count:* ${visaForm.travellers}
 📅 *Target Travel Window:* ${visaForm.travelMonth}
 
 ━━━━━━━━━━━━━━━━━━━━
-_Enquiry from Tourism-Bazar Hero Booking Widget_
-_Please share required document checklist, visa processing time, and consultation quote._`;
+_Enquiry from Horizon Tourism & Visas Portal_
+_Please share required document checklist, processing timeline, and exact quotation._`;
 
     window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
   };
@@ -231,11 +237,11 @@ _Please assist with documentation verification, airline clearance, and requireme
     window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
   };
 
-  // Top Row Tab Definitions
+  // Top Row Tab Definitions (Strict Sequence: Visas, Holidays, Void Ticket, Documentation)
   const tabs = [
-    { id: 'dummy-ticket', label: 'Dummy Ticket', icon: Plane },
     { id: 'visas', label: 'Visas', icon: Globe2 },
     { id: 'holidays', label: 'Holidays', icon: Palmtree },
+    { id: 'void-ticket', label: 'Void Ticket', icon: Plane },
     { id: 'documentation', label: 'Documentation', icon: FileCheck2 },
   ];
 
@@ -266,7 +272,7 @@ _Please assist with documentation verification, airline clearance, and requireme
           <div className="flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold tracking-wider text-slate-200 uppercase">
             <span>HORIZON TOURISM &amp; VISAS</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#FACC15]" />
-            <span className="text-[#FACC15]">4.9★ VERIFIED DESK</span>
+            <span className="text-[#FACC15]">29+ COUNTRIES DIRECT DESK</span>
           </div>
 
           {/* Main Headline */}
@@ -279,7 +285,7 @@ _Please assist with documentation verification, airline clearance, and requireme
 
           {/* Concise 2-line Subtitle */}
           <p className="text-slate-200 text-xs sm:text-sm md:text-base font-normal max-w-xl mx-auto leading-relaxed">
-            Verifiable flight itineraries and international visa consultation across 30+ countries, quoted on WhatsApp in minutes.
+            29+ Countries • Visas, E-Visas &amp; Clearance Services, plus verifiable void tickets quoted on WhatsApp in minutes.
           </p>
         </div>
 
@@ -317,9 +323,276 @@ _Please assist with documentation verification, airline clearance, and requireme
           {/* Connected White Booking Card */}
           <div className="w-full max-w-full mx-auto bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-4 sm:p-6 md:p-7 space-y-4 sm:space-y-6">
 
-            {/* TAB 1: DUMMY TICKET / FLIGHTS */}
-            {activeTab === 'dummy-ticket' && (
-              <form onSubmit={handleDummyTicketSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
+            {/* TAB 1: VISAS (Default Primary Service) */}
+            {activeTab === 'visas' && (
+              <form onSubmit={handleVisaSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
+                
+                {/* Pill-Shaped Radio Option Buttons */}
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
+                  {['All Options', 'Visas Only', 'Services Only'].map((option) => {
+                    const isSelected = visaSubOption === option;
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setVisaSubOption(option)}
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                          isSelected
+                            ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
+                            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
+                        }`}
+                      >
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                          isSelected ? 'border-brand-navy' : 'border-slate-300'
+                        }`}>
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
+                        </span>
+                        <span>{option}</span>
+                      </button>
+                    );
+                  })}
+
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
+                    <Globe2 className="w-4 h-4 text-blue-600" />
+                    <span>29+ Countries &amp; Specialized Desks</span>
+                  </div>
+                </div>
+
+                {/* Form Inputs: Destination Country + Dynamic Visa/Service Options */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {/* Country Dropdown */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Globe2 className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Destination Country</span>
+                    </label>
+                    <select
+                      value={visaForm.country}
+                      onChange={(e) => handleCountryChange(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      {countries.map((c) => (
+                        <option key={c.id} value={c.name}>
+                          {c.flag} {c.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Dynamic Visa / Service Type Dropdown populated from data/countries.js */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Visa / Service Type</span>
+                    </label>
+                    <select
+                      value={visaForm.selectedOption}
+                      onChange={(e) => setVisaForm({ ...visaForm, selectedOption: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      {filteredVisaOptions.map((opt) => (
+                        <option key={opt.id} value={opt.title}>
+                          {opt.category === 'service' ? '⚡ ' : '📄 '}{opt.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Travellers Count */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Travellers Count</span>
+                    </label>
+                    <select
+                      value={visaForm.travellers}
+                      onChange={(e) => setVisaForm({ ...visaForm, travellers: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      <option value="1 Traveller">1 Traveller</option>
+                      <option value="2 Travellers">2 Travellers</option>
+                      <option value="3-4 Travellers (Family)">3-4 Travellers (Family)</option>
+                      <option value="5+ Travellers (Group)">5+ Travellers (Group)</option>
+                    </select>
+                  </div>
+
+                  {/* Travel Period */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Travel Period</span>
+                    </label>
+                    <select
+                      value={visaForm.travelMonth}
+                      onChange={(e) => setVisaForm({ ...visaForm, travelMonth: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      <option value="Urgent (Next 7-10 Days)">Urgent (Next 7-10 Days)</option>
+                      <option value="Within next 15-30 days">Within next 15-30 days</option>
+                      <option value="Next 1-2 Months">Next 1-2 Months</option>
+                      <option value="Flexible Planning">Flexible Planning</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Full-width CTA Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark py-4 px-6 rounded-xl text-base font-black shadow-lg hover:shadow-brand-yellow/30 transition-all duration-200 active:scale-[0.99] cursor-pointer"
+                  >
+                    <MessageCircle className="w-5 h-5 fill-brand-dark" />
+                    <span>Get Quote on WhatsApp</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  <p className="text-center text-[11px] text-slate-500 mt-2 font-medium">
+                    Includes exact document checklist, embassy appointment scheduling, and verification.
+                  </p>
+                </div>
+
+              </form>
+            )}
+
+            {/* TAB 3: HOLIDAYS */}
+            {activeTab === 'holidays' && (
+              <form onSubmit={handleHolidaySubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
+                
+                {/* Pill-Shaped Radio Option Buttons (International, Domestic, Umrah) */}
+                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
+                  {['International', 'Domestic', 'Umrah'].map((option) => {
+                    const isSelected = holidaySubOption === option;
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => {
+                          setHolidaySubOption(option);
+                          // Set default destination according to selection
+                          if (option === 'Domestic') {
+                            setHolidayForm(prev => ({ ...prev, destination: domesticDestinations[0] }));
+                          } else if (option === 'Umrah') {
+                            setHolidayForm(prev => ({ ...prev, destination: umrahDestinations[0] }));
+                          } else {
+                            setHolidayForm(prev => ({ ...prev, destination: internationalDestinations[0] }));
+                          }
+                        }}
+                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
+                          isSelected
+                            ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
+                            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
+                        }`}
+                      >
+                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                          isSelected ? 'border-brand-navy' : 'border-slate-300'
+                        }`}>
+                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
+                        </span>
+                        <span>{option}</span>
+                      </button>
+                    );
+                  })}
+
+                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-amber-800 bg-amber-50 px-3 py-1.5 rounded-full font-semibold border border-amber-200">
+                    <Sparkles className="w-4 h-4 text-amber-600" />
+                    <span>Best Price Guarantee & Verified Hotels</span>
+                  </div>
+                </div>
+
+                {/* Form Inputs */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {/* Destination */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>{holidaySubOption} Destination</span>
+                    </label>
+                    <select
+                      value={holidayForm.destination}
+                      onChange={(e) => setHolidayForm({ ...holidayForm, destination: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      {holidaySubOption === 'Domestic' && domesticDestinations.map(d => <option key={d} value={d}>{d}</option>)}
+                      {holidaySubOption === 'Umrah' && umrahDestinations.map(d => <option key={d} value={d}>{d}</option>)}
+                      {holidaySubOption === 'International' && internationalDestinations.map(d => <option key={d} value={d}>{d}</option>)}
+                    </select>
+                  </div>
+
+                  {/* Travel Month */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Travel Month</span>
+                    </label>
+                    <select
+                      value={holidayForm.travelMonth}
+                      onChange={(e) => setHolidayForm({ ...holidayForm, travelMonth: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      <option value="This Month">This Month</option>
+                      <option value="Next Month">Next Month</option>
+                      <option value="Upcoming Season (Winter/Spring)">Upcoming Season</option>
+                      <option value="Summer Holidays">Summer Holidays</option>
+                    </select>
+                  </div>
+
+                  {/* Duration Filter */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Duration</span>
+                    </label>
+                    <select
+                      value={holidayForm.duration}
+                      onChange={(e) => setHolidayForm({ ...holidayForm, duration: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      <option value="3 Nights / 4 Days">3 Nights / 4 Days</option>
+                      <option value="4 Nights / 5 Days">4 Nights / 5 Days</option>
+                      <option value="5 Nights / 6 Days">5 Nights / 6 Days</option>
+                      <option value="14 Nights / 15 Days">14 Nights / 15 Days</option>
+                    </select>
+                  </div>
+
+                  {/* Travellers */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-brand-navy" />
+                      <span>Travellers Type</span>
+                    </label>
+                    <select
+                      value={holidayForm.travellers}
+                      onChange={(e) => setHolidayForm({ ...holidayForm, travellers: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
+                    >
+                      <option value="2 Adults (Couple)">2 Adults (Couple)</option>
+                      <option value="Family with Kids (3-4)">Family with Kids (3-4)</option>
+                      <option value="Solo Traveler">Solo Traveler</option>
+                      <option value="Group / Friends (5+)">Group / Friends (5+)</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Full-width CTA Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark py-4 px-6 rounded-xl text-base font-black shadow-lg hover:shadow-brand-yellow/30 transition-all duration-200 active:scale-[0.99] cursor-pointer"
+                  >
+                    <MessageCircle className="w-5 h-5 fill-brand-dark" />
+                    <span>Get Quote on WhatsApp</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  <p className="text-center text-[11px] text-slate-500 mt-2 font-medium">
+                    Receive complete day-wise itineraries, verified hotel options, and cab quotes.
+                  </p>
+                </div>
+
+              </form>
+            )}
+
+            {/* TAB 3: VOID TICKET (Renamed from Dummy Ticket) */}
+            {activeTab === 'void-ticket' && (
+              <form onSubmit={handleVoidTicketSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
                 
                 {/* Pill-Shaped Radio Option Buttons (One Way, Round Trip, Multi City) */}
                 <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
@@ -349,7 +622,7 @@ _Please assist with documentation verification, airline clearance, and requireme
 
                   <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full font-semibold border border-emerald-200">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>100% Verifiable on Airline Websites</span>
+                    <span>100% Verifiable Void Ticket (PNR)</span>
                   </div>
                 </div>
 
@@ -528,269 +801,8 @@ _Please assist with documentation verification, airline clearance, and requireme
                     <span>•</span>
                     <span>✓ Live Airline PNR Code</span>
                     <span>•</span>
-                    <span>🔒 No Hidden Charges</span>
+                    <span>🔒 Verifiable Void Ticket</span>
                   </div>
-                </div>
-
-              </form>
-            )}
-
-            {/* TAB 2: VISAS */}
-            {activeTab === 'visas' && (
-              <form onSubmit={handleVisaSubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
-                
-                {/* Pill-Shaped Radio Option Buttons (Tourist Visa, Business Visa, Transit Visa) */}
-                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
-                  {['Tourist Visa', 'Business Visa', 'Transit Visa'].map((option) => {
-                    const isSelected = visaSubOption === option;
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => setVisaSubOption(option)}
-                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
-                          isSelected
-                            ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
-                            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
-                        }`}
-                      >
-                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          isSelected ? 'border-brand-navy' : 'border-slate-300'
-                        }`}>
-                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
-                        </span>
-                        <span>{option}</span>
-                      </button>
-                    );
-                  })}
-
-                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full font-semibold border border-blue-200">
-                    <Globe2 className="w-4 h-4 text-blue-600" />
-                    <span>30+ Consular Desks Worldwide</span>
-                  </div>
-                </div>
-
-                {/* Form Inputs */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {/* Country */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Globe2 className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Destination Country</span>
-                    </label>
-                    <select
-                      value={visaForm.country}
-                      onChange={(e) => setVisaForm({ ...visaForm, country: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      {popularVisaCountries.map(c => <option key={c} value={c}>{c}</option>)}
-                    </select>
-                  </div>
-
-                  {/* Entry Type */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Entry Preference</span>
-                    </label>
-                    <select
-                      value={visaForm.entryType}
-                      onChange={(e) => setVisaForm({ ...visaForm, entryType: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="Single Entry">Single Entry</option>
-                      <option value="Multiple Entry">Multiple Entry</option>
-                      <option value="Express Visa on Arrival / OTB">Express VoA / OTB</option>
-                    </select>
-                  </div>
-
-                  {/* Travellers Count */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Travellers Count</span>
-                    </label>
-                    <select
-                      value={visaForm.travellers}
-                      onChange={(e) => setVisaForm({ ...visaForm, travellers: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="1 Traveller">1 Traveller</option>
-                      <option value="2 Travellers">2 Travellers</option>
-                      <option value="3-4 Travellers (Family)">3-4 Travellers (Family)</option>
-                      <option value="5+ Travellers (Group)">5+ Travellers (Group)</option>
-                    </select>
-                  </div>
-
-                  {/* Travel Period */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Travel Period</span>
-                    </label>
-                    <select
-                      value={visaForm.travelMonth}
-                      onChange={(e) => setVisaForm({ ...visaForm, travelMonth: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="Urgent (Next 7-10 Days)">Urgent (Next 7-10 Days)</option>
-                      <option value="Within next 15-30 days">Within next 15-30 days</option>
-                      <option value="Next 1-2 Months">Next 1-2 Months</option>
-                      <option value="Flexible Planning">Flexible Planning</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Full-width CTA Button */}
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2.5 bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark py-4 px-6 rounded-xl text-base font-black shadow-lg hover:shadow-brand-yellow/30 transition-all duration-200 active:scale-[0.99] cursor-pointer"
-                  >
-                    <MessageCircle className="w-5 h-5 fill-brand-dark" />
-                    <span>Get Quote on WhatsApp</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                  <p className="text-center text-[11px] text-slate-500 mt-2 font-medium">
-                    Includes document checklist, embassy appointment scheduling, and verification.
-                  </p>
-                </div>
-
-              </form>
-            )}
-
-            {/* TAB 3: HOLIDAYS */}
-            {activeTab === 'holidays' && (
-              <form onSubmit={handleHolidaySubmit} className="space-y-4 sm:space-y-6 w-full max-w-full">
-                
-                {/* Pill-Shaped Radio Option Buttons (International, Domestic, Umrah) */}
-                <div className="flex flex-wrap items-center gap-2 pb-3 sm:pb-4 border-b border-slate-100 w-full max-w-full">
-                  {['International', 'Domestic', 'Umrah'].map((option) => {
-                    const isSelected = holidaySubOption === option;
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => {
-                          setHolidaySubOption(option);
-                          // Set default destination according to selection
-                          if (option === 'Domestic') {
-                            setHolidayForm(prev => ({ ...prev, destination: domesticDestinations[0] }));
-                          } else if (option === 'Umrah') {
-                            setHolidayForm(prev => ({ ...prev, destination: umrahDestinations[0] }));
-                          } else {
-                            setHolidayForm(prev => ({ ...prev, destination: internationalDestinations[0] }));
-                          }
-                        }}
-                        className={`rounded-full border-2 px-3.5 py-2 sm:px-5 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-bold transition-all duration-150 cursor-pointer ${
-                          isSelected
-                            ? 'border-brand-navy bg-brand-navy/10 text-brand-navy shadow-sm'
-                            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900'
-                        }`}
-                      >
-                        <span className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                          isSelected ? 'border-brand-navy' : 'border-slate-300'
-                        }`}>
-                          {isSelected && <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-brand-navy" />}
-                        </span>
-                        <span>{option}</span>
-                      </button>
-                    );
-                  })}
-
-                  <div className="ml-auto hidden md:flex items-center gap-1.5 text-xs text-amber-800 bg-amber-50 px-3 py-1.5 rounded-full font-semibold border border-amber-200">
-                    <Sparkles className="w-4 h-4 text-amber-600" />
-                    <span>Best Price Guarantee & Verified Hotels</span>
-                  </div>
-                </div>
-
-                {/* Form Inputs */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {/* Destination */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>{holidaySubOption} Destination</span>
-                    </label>
-                    <select
-                      value={holidayForm.destination}
-                      onChange={(e) => setHolidayForm({ ...holidayForm, destination: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      {holidaySubOption === 'Domestic' && domesticDestinations.map(d => <option key={d} value={d}>{d}</option>)}
-                      {holidaySubOption === 'Umrah' && umrahDestinations.map(d => <option key={d} value={d}>{d}</option>)}
-                      {holidaySubOption === 'International' && internationalDestinations.map(d => <option key={d} value={d}>{d}</option>)}
-                    </select>
-                  </div>
-
-                  {/* Travel Month */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Travel Month</span>
-                    </label>
-                    <select
-                      value={holidayForm.travelMonth}
-                      onChange={(e) => setHolidayForm({ ...holidayForm, travelMonth: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="This Month">This Month</option>
-                      <option value="Next Month">Next Month</option>
-                      <option value="Upcoming Season (Winter/Spring)">Upcoming Season</option>
-                      <option value="Summer Holidays">Summer Holidays</option>
-                    </select>
-                  </div>
-
-                  {/* Duration Filter */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Duration</span>
-                    </label>
-                    <select
-                      value={holidayForm.duration}
-                      onChange={(e) => setHolidayForm({ ...holidayForm, duration: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="3 Nights / 4 Days">3 Nights / 4 Days</option>
-                      <option value="4 Nights / 5 Days">4 Nights / 5 Days</option>
-                      <option value="5 Nights / 6 Days">5 Nights / 6 Days</option>
-                      <option value="14 Nights / 15 Days">14 Nights / 15 Days</option>
-                    </select>
-                  </div>
-
-                  {/* Travellers */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5 text-brand-navy" />
-                      <span>Travellers Type</span>
-                    </label>
-                    <select
-                      value={holidayForm.travellers}
-                      onChange={(e) => setHolidayForm({ ...holidayForm, travellers: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-3 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-yellow"
-                    >
-                      <option value="2 Adults (Couple)">2 Adults (Couple)</option>
-                      <option value="Family with Kids (3-4)">Family with Kids (3-4)</option>
-                      <option value="Solo Traveler">Solo Traveler</option>
-                      <option value="Group / Friends (5+)">Group / Friends (5+)</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Full-width CTA Button */}
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2.5 bg-brand-yellow hover:bg-brand-yellow-hover text-brand-dark py-4 px-6 rounded-xl text-base font-black shadow-lg hover:shadow-brand-yellow/30 transition-all duration-200 active:scale-[0.99] cursor-pointer"
-                  >
-                    <MessageCircle className="w-5 h-5 fill-brand-dark" />
-                    <span>Get Quote on WhatsApp</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                  <p className="text-center text-[11px] text-slate-500 mt-2 font-medium">
-                    Receive complete day-wise itineraries, verified hotel options, and cab quotes.
-                  </p>
                 </div>
 
               </form>
@@ -1007,7 +1019,7 @@ _Please assist with documentation verification, airline clearance, and requireme
             </div>
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />
-              <span className="truncate">30+ Visa Countries</span>
+              <span className="truncate">29+ Countries &amp; Clearances</span>
             </div>
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-2.5 sm:px-3 py-2 rounded-xl min-w-0">
               <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0" />

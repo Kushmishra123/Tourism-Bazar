@@ -10,7 +10,17 @@ export default function CountryDirectory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
 
-  const regions = ['All', 'Southeast Asia', 'Middle East', 'Europe', 'East Asia', 'North America', 'Africa', 'Caucasus'];
+  const regions = [
+    'All',
+    'Middle East',
+    'Southeast Asia',
+    'South Asia',
+    'Central Asia',
+    'East Asia',
+    'Africa',
+    'Americas',
+    'East Asia / Eurasia',
+  ];
 
   const filteredCountries = countries.filter((country) => {
     const matchesSearch = 
@@ -108,17 +118,28 @@ export default function CountryDirectory() {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-4 flex flex-col flex-grow justify-between space-y-3">
-                <p className="text-xs text-brand-muted line-clamp-2 leading-relaxed">
-                  {country.highlight || country.overview}
-                </p>
+                {/* Content */}
+                <div className="p-4 flex flex-col flex-grow justify-between space-y-3">
+                  <p className="text-xs text-brand-muted line-clamp-2 leading-relaxed">
+                    {country.highlight || country.overview}
+                  </p>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-navy group-hover:text-brand-yellow-dark">
-                  <span>{country.visas?.length || 2} Visa Types Available</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-brand-navy group-hover:text-brand-yellow-dark">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {country.visas?.filter((v) => v.category !== 'service').length > 0 && (
+                        <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px] font-medium">
+                          {country.visas.filter((v) => v.category !== 'service').length} Visas
+                        </span>
+                      )}
+                      {country.visas?.filter((v) => v.category === 'service').length > 0 && (
+                        <span className="bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded text-[11px] font-bold">
+                          +{country.visas.filter((v) => v.category === 'service').length} Clearances
+                        </span>
+                      )}
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
+                  </div>
                 </div>
-              </div>
             </Link>
           ))}
         </div>

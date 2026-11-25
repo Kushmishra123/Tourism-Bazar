@@ -31,6 +31,9 @@ export default function CountryVisaPage({ params }) {
     notFound();
   }
 
+  const regularVisas = country.visas?.filter((v) => v.category !== 'service') || [];
+  const specialServices = country.visas?.filter((v) => v.category === 'service') || [];
+
   return (
     <div className="bg-slate-50 min-h-screen pb-20">
       {/* Hero Header with Destination Image */}
@@ -87,23 +90,49 @@ export default function CountryVisaPage({ params }) {
           {/* Main Content Column (8 cols) */}
           <div className="lg:col-span-8 space-y-8">
             {/* Section: Available Visa Types */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-2xl font-bold text-brand-dark">Available Visa Categories</h2>
-                  <p className="text-xs text-brand-muted">Select the visa category matching your travel intent to apply.</p>
+            {regularVisas.length > 0 && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-brand-dark">Available Visa Categories</h2>
+                    <p className="text-xs text-brand-muted">Select the visa category matching your travel intent to apply.</p>
+                  </div>
+                  <span className="text-xs font-bold text-brand-navy bg-slate-200/80 px-2.5 py-1 rounded-full">
+                    {regularVisas.length} {regularVisas.length === 1 ? 'Option' : 'Options'}
+                  </span>
                 </div>
-                <span className="text-xs font-bold text-brand-navy bg-slate-200/80 px-2.5 py-1 rounded-full">
-                  {country.visas?.length || 0} Options
-                </span>
-              </div>
 
-              <div className="space-y-5">
-                {country.visas?.map((visa) => (
-                  <VisaApplyCard key={visa.id} country={country} visa={visa} />
-                ))}
+                <div className="space-y-5">
+                  {regularVisas.map((visa) => (
+                    <VisaApplyCard key={visa.id} country={country} visa={visa} />
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* Section: Special Clearances & Facilitation Services */}
+            {specialServices.length > 0 && (
+              <div className="space-y-4 pt-4 border-t border-slate-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-bold uppercase tracking-wider mb-1">
+                      <span>⚡ Fast-Track Clearances</span>
+                    </div>
+                    <h2 className="text-2xl font-bold text-brand-dark">Special Clearances & Facilitation Services</h2>
+                    <p className="text-xs text-brand-muted">Government registrations, pre-arrival authorizations, border clearances & extensions.</p>
+                  </div>
+                  <span className="text-xs font-bold text-blue-700 bg-blue-100/80 px-2.5 py-1 rounded-full">
+                    {specialServices.length} {specialServices.length === 1 ? 'Service' : 'Services'}
+                  </span>
+                </div>
+
+                <div className="space-y-5">
+                  {specialServices.map((visa) => (
+                    <VisaApplyCard key={visa.id} country={country} visa={visa} isService={true} />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* General Requirements & Checklists */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-5">
@@ -123,17 +152,17 @@ export default function CountryVisaPage({ params }) {
                 ))}
               </ul>
 
-              {/* Need Dummy Ticket or Hotel Booking CTA inside */}
+              {/* Need Void Ticket or Hotel Booking CTA inside */}
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 mt-4">
                 <div className="space-y-0.5 text-center sm:text-left">
                   <p className="text-xs font-bold text-brand-dark">Missing flight reservation or hotel vouchers for {country.name}?</p>
-                  <p className="text-xs text-brand-muted">We provide embassy-compliant dummy tickets and verified hotel confirmations.</p>
+                  <p className="text-xs text-brand-muted">We provide embassy-compliant void tickets (flight itineraries) and verified hotel confirmations.</p>
                 </div>
                 <Link
-                  href="/dummy-ticket"
+                  href="/void-ticket"
                   className="bg-brand-navy hover:bg-brand-navy-light text-white text-xs font-bold px-4 py-2.5 rounded-xl shrink-0 transition-colors"
                 >
-                  Book Flight Itinerary
+                  Book Void Ticket / Itinerary
                 </Link>
               </div>
             </div>

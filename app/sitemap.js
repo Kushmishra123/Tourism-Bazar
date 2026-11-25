@@ -10,6 +10,7 @@ export default function sitemap() {
   // Static routes
   const staticRoutes = [
     '',
+    '/void-ticket',
     '/dummy-ticket',
     '/visas',
     '/holidays',

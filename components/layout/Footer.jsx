@@ -7,20 +7,20 @@ import { WHATSAPP_CONFIG, buildWhatsAppUrl, formatGeneralEnquiryMessage } from '
 export default function Footer() {
   const quickLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Dummy Ticket for Visa', href: '/dummy-ticket' },
-    { name: 'Visa Services (30+ Countries)', href: '/visas' },
+    { name: 'Void Ticket for Visa', href: '/void-ticket' },
+    { name: 'Visa Services (29+ Countries)', href: '/visas' },
     { name: 'Holiday Packages', href: '/holidays' },
     { name: 'Travel Documentation', href: '/documentation' },
     { name: 'Contact & Support', href: '/contact' },
   ];
 
   const visaLinks = [
-    { name: 'Dubai / UAE E-Visa', href: '/visas/uae' },
-    { name: 'Saudi Arabia & Umrah', href: '/visas/saudi-arabia' },
-    { name: 'Thailand Tourist Visa', href: '/visas/thailand' },
+    { name: 'UAE Visa & Extensions', href: '/visas/uae' },
+    { name: 'Qatar Visa & Clearance', href: '/visas/qatar' },
+    { name: 'Thailand Tourist & ARVC', href: '/visas/thailand' },
     { name: 'Vietnam 90 Days E-Visa', href: '/visas/vietnam' },
-    { name: 'Singapore Visa Assistance', href: '/visas/singapore' },
-    { name: 'Schengen Europe Visas', href: '/visas/schengen' },
+    { name: 'Singapore Visa & RMI', href: '/visas/singapore' },
+    { name: 'Malaysia Visa & DAC/VDR', href: '/visas/malaysia' },
   ];
 
   const docLinks = [
@@ -163,7 +163,7 @@ export default function Footer() {
           {/* Legal Disclaimer & Copyright */}
           <div className="pt-8 text-xs text-slate-400 space-y-4">
             <p className="leading-relaxed bg-brand-navy/60 p-4 rounded-xl border border-white/5">
-              <strong className="text-slate-200">Disclaimer:</strong> Horizon Tourism & Visas Co. is a private travel facilitation agency providing documentation assistance, flight itinerary reservations (dummy tickets), and holiday planning. We are not an embassy, consulate, or government authority. Flight itineraries provided for visa purposes are verifiable reservations for documentation only and do not constitute confirmed airline passenger boarding passes. Final visa approval and entry permission rest exclusively with the sovereign immigration authorities of the destination country.
+              <strong className="text-slate-200">Disclaimer:</strong> Horizon Tourism & Visas Co. is a private travel facilitation agency providing documentation assistance, flight itinerary reservations (void tickets), and holiday planning. We are not an embassy, consulate, or government authority. Flight itineraries provided for visa purposes are verifiable reservations for documentation only and do not constitute confirmed airline passenger boarding passes. Final visa approval and entry permission rest exclusively with the sovereign immigration authorities of the destination country.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-slate-500">
@@ -171,7 +171,7 @@ export default function Footer() {
                 © {new Date().getFullYear()} Horizon Tourism & Visas Co. All rights reserved.
               </p>
               <div className="flex items-center gap-6 text-slate-400">
-                <Link href="/dummy-ticket" className="hover:text-brand-yellow transition-colors">Dummy Ticket</Link>
+                <Link href="/void-ticket" className="hover:text-brand-yellow transition-colors">Void Ticket</Link>
                 <span>•</span>
                 <Link href="/visas" className="hover:text-brand-yellow transition-colors">Visas</Link>
                 <span>•</span>

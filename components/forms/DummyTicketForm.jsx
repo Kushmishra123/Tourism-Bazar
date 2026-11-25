@@ -292,7 +292,7 @@ export default function DummyTicketForm() {
           <div>
             <strong className="font-bold">Important Notice & Disclaimer:</strong>
             <p className="mt-0.5">
-              A dummy ticket is a flight itinerary reservation held exclusively for visa application documentation, embassy interviews, and travel proof. It is NOT a confirmed paid passenger ticket and cannot be used to board an aircraft.
+              A void ticket is a flight itinerary reservation held exclusively for visa application documentation, embassy interviews, and travel proof. It is NOT a confirmed paid passenger ticket and cannot be used to board an aircraft.
             </p>
           </div>
         </div>

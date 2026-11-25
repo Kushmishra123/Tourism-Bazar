@@ -10,19 +10,19 @@ export default function FaqSection() {
 
   const homepageFaqs = [
     {
-      category: "Dummy Ticket & Validity",
-      question: "How does a dummy ticket work, and how do I verify the PNR on airline websites?",
-      answer: "A dummy ticket is a genuine, active flight reservation held on airline Global Distribution Systems (GDS like Amadeus, Sabre, or Galileo). Each ticket comes with an authentic 6-character PNR (Passenger Name Record) and airline code. You can verify it directly on the official airline website (e.g., Emirates, Qatar Airways, Singapore Airlines, Saudia) under 'Manage Booking' by entering your surname and PNR."
+      category: "Void Ticket & Validity",
+      question: "How does a void ticket work, and how do I verify the PNR on airline websites?",
+      answer: "A void ticket is a genuine, active flight reservation held on airline Global Distribution Systems (GDS like Amadeus, Sabre, or Galileo). Each ticket comes with an authentic 6-character PNR (Passenger Name Record) and airline code. You can verify it directly on the official airline website (e.g., Emirates, Qatar Airways, Singapore Airlines, Saudia) under 'Manage Booking' by entering your surname and PNR."
     },
     {
-      category: "Dummy Ticket & Validity",
-      question: "How long does a dummy ticket remain valid for visa submission?",
+      category: "Void Ticket & Validity",
+      question: "How long does a void ticket remain valid for visa submission?",
       answer: "Our standard flight itineraries are maintained live for 48 hours to 2 weeks depending on the airline's ticketing time limit and your scheduled visa appointment date. If your embassy appointment gets rescheduled, we provide prompt date re-issuance support on WhatsApp."
     },
     {
-      category: "Dummy Ticket & Validity",
-      question: "Is a dummy ticket accepted by VFS, BLS, and embassies for Schengen / US / UK visas?",
-      answer: "Yes! Embassies and consulates explicitly advise applicants NOT to purchase expensive, non-refundable flight tickets before their visa is granted. They require a 'Flight Itinerary' or 'Round-trip Reservation' proving your travel intent, which is exactly what our verifiable dummy tickets fulfill."
+      category: "Void Ticket & Validity",
+      question: "Is a void ticket accepted by VFS, BLS, and embassies for Schengen / US / UK visas?",
+      answer: "Yes! Embassies and consulates explicitly advise applicants NOT to purchase expensive, non-refundable flight tickets before their visa is granted. They require a 'Flight Itinerary' or 'Round-trip Reservation' proving your travel intent, which is exactly what our verifiable void tickets fulfill."
     },
     {
       category: "Visa Processing",
@@ -46,7 +46,7 @@ export default function FaqSection() {
     },
   ];
 
-  const categories = ['All', 'Dummy Ticket & Validity', 'Visa Processing', 'Payment Security'];
+  const categories = ['All', 'Void Ticket & Validity', 'Visa Processing', 'Payment Security'];
 
   const filteredFaqs = activeCategory === 'All'
     ? homepageFaqs
@@ -55,7 +55,7 @@ export default function FaqSection() {
   const handleCustomQuestion = () => {
     const url = buildWhatsAppUrl(formatGeneralEnquiryMessage({
       subject: "Direct FAQ Consultation",
-      message: "Hello Horizon Tourism team, I have a specific question regarding dummy tickets, visa validity, or package payments."
+      message: "Hello Horizon Tourism team, I have a specific question regarding void tickets, visa validity, or package payments."
     }));
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -74,7 +74,7 @@ export default function FaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-base text-brand-muted max-w-2xl mx-auto">
-            Everything you need to know about verifiable dummy tickets, visa timelines, and our secure agency standards.
+            Everything you need to know about verifiable void tickets, visa timelines, and our secure agency standards.
           </p>
 
           {/* Filter Pills */}

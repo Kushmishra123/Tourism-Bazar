@@ -11,8 +11,8 @@ export default function FloatingWhatsApp() {
   // Quick query chips
   const queryChips = [
     {
-      label: '✈️ Verifiable Dummy Ticket',
-      query: 'Hello! I need an authentic verifiable flight itinerary (dummy ticket) for my visa application. Please share available airlines, PNR validity, and pricing.',
+      label: '✈️ Verifiable Void Ticket',
+      query: 'Hello! I need an authentic verifiable void ticket (flight itinerary) for my visa application. Please share available airlines, PNR validity, and pricing.',
     },
     {
       label: '🛂 Visa Assistance & Fees',

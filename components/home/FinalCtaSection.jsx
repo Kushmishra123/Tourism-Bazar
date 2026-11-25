@@ -28,7 +28,7 @@ export default function FinalCtaSection() {
         </h2>
 
         <p className="text-base sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
-          Let Horizon Tourism & Visas Co. help you plan your next trip. Fast dummy tickets, seamless visa filings, and memorable holidays are just one message away.
+          Let Horizon Tourism & Visas Co. help you plan your next trip. Fast void tickets, seamless visa filings, and memorable holidays are just one message away.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

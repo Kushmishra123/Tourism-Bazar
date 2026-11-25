@@ -21,8 +21,8 @@ export default function TestimonialsSection() {
     {
       id: 3,
       name: "Karan Malhotra",
-      trip: "Dummy Ticket for Schengen Visa",
-      review: "I applied for a Schengen visa via VFS Germany and needed a verifiable flight itinerary matching my multi-city route. The dummy ticket booking was delivered within 30 minutes on WhatsApp and was accepted smoothly.",
+      trip: "Void Ticket for Schengen Visa",
+      review: "I applied for a Schengen visa via VFS Germany and needed a verifiable flight itinerary matching my multi-city route. The void ticket booking was delivered within 30 minutes on WhatsApp and was accepted smoothly.",
       rating: 5,
       date: "Sample Verified Review",
     },
@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
             What Our Clients Say
           </h2>
           <p className="text-sm text-brand-muted">
-            <span className="font-semibold text-slate-700">Transparency Note:</span> Below are representative reviews from travelers who utilized our visa guidance, dummy ticket itineraries, and holiday bookings.
+            <span className="font-semibold text-slate-700">Transparency Note:</span> Below are representative reviews from travelers who utilized our visa guidance, void ticket itineraries, and holiday bookings.
           </p>
         </div>
 

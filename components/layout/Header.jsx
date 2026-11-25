@@ -17,9 +17,9 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Dummy Ticket', href: '/dummy-ticket' },
     { name: 'Visa Services', href: '/visas' },
     { name: 'Holidays', href: '/holidays' },
+    { name: 'Void Ticket', href: '/void-ticket' },
     { name: 'Documentation', href: '/documentation' },
     { name: 'Contact Us', href: '/contact' },
   ];
@@ -60,7 +60,7 @@ export default function Header() {
               <MapPin className="w-3 h-3 text-brand-yellow shrink-0" />
               <span className="font-semibold text-white">New Delhi</span>
               <span className="text-white/40">|</span>
-              <span className="truncate">30+ Countries Visa &amp; PNR Desk</span>
+              <span className="truncate">29+ Countries Visa &amp; PNR Desk</span>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ export default function Header() {
               <Compass className="w-2.5 h-2.5" />
             </div>
             <span className="font-bold text-[10px] sm:text-[11px] text-slate-800 whitespace-nowrap">
-              Quick PNR &amp; Visa Quote
+              Quick Void Ticket &amp; Visa Quote
             </span>
             <button
               onClick={handleWhatsAppEnquiry}

@@ -165,7 +165,7 @@ Hi Horizon Tourism team, I would like to turn my travel idea into reality. Pleas
                     <div className="space-y-1 mt-1 text-slate-600 font-medium">
                       <div className="flex items-center gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span>Verifiable Dummy Ticket (PNR)</span>
+                        <span>Verifiable Void Ticket (PNR)</span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />

@@ -9,9 +9,9 @@ export default function MobileBottomNav() {
 
   const navItems = [
     { name: 'Home', href: '/', icon: Home },
-    { name: 'Dummy Ticket', href: '/dummy-ticket', icon: Plane },
     { name: 'Visas', href: '/visas', icon: Globe2 },
     { name: 'Holidays', href: '/holidays', icon: Palmtree },
+    { name: 'Void Ticket', href: '/void-ticket', icon: Plane },
     { name: 'More', href: '/documentation', icon: Compass },
   ];
 

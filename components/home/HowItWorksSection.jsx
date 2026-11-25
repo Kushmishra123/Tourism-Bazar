@@ -10,7 +10,7 @@ export default function HowItWorksSection() {
       icon: Share2,
       title: "Share Plan",
       subtitle: "Tell Us Where & When",
-      description: "Pick your service (dummy ticket, visa assistance, holiday package, or hotel vouchers) and share your route, dates, and traveller count on our website or direct WhatsApp.",
+      description: "Pick your service (void ticket, visa assistance, holiday package, or hotel vouchers) and share your route, dates, and traveller count on our website or direct WhatsApp.",
       badge: "Quick 2-Min Form"
     },
     {

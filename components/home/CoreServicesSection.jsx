@@ -5,26 +5,15 @@ import { Plane, Globe2, Palmtree, FileText, ArrowRight } from 'lucide-react';
 export default function CoreServicesSection() {
   const services = [
     {
-      id: "dummy-ticket",
-      icon: Plane,
-      title: "Dummy Ticket",
-      tag: "Flight Itinerary",
-      description: "Get assistance with flight itinerary and dummy ticket requirements for your travel documentation.",
-      image: "https://images.unsplash.com/photo-1540339832862-474599807836?q=80&w=800&auto=format&fit=crop",
-      cta: "Book Dummy Ticket",
-      href: "/dummy-ticket",
-      points: ["Verifiable reservation codes", "Embassy & VFS compliant", "Fast delivery on WhatsApp"],
-    },
-    {
       id: "visas",
       icon: Globe2,
       title: "Visa Services",
-      tag: "30+ Destinations",
-      description: "Explore tourist and business visa assistance for 30+ international destinations.",
+      tag: "29+ Countries",
+      description: "Explore tourist and business visa assistance and electronic clearance services across 29+ international destinations.",
       image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800&auto=format&fit=crop",
       cta: "Explore Visas",
       href: "/visas",
-      points: ["Tourist & Business categories", "Document review & check", "Consular guidance"],
+      points: ["Tourist, Business & E-Visa categories", "Document review & check", "Consular & Express processing"],
     },
     {
       id: "holidays",
@@ -36,6 +25,17 @@ export default function CoreServicesSection() {
       cta: "Explore Holidays",
       href: "/holidays",
       points: ["Umrah packages in Makkah & Madinah", "Curated day-wise itineraries", "Hand-picked hotel stays"],
+    },
+    {
+      id: "void-ticket",
+      icon: Plane,
+      title: "Void Ticket",
+      tag: "Flight Itinerary",
+      description: "Get assistance with flight itinerary and void ticket requirements for your travel documentation.",
+      image: "https://images.unsplash.com/photo-1540339832862-474599807836?q=80&w=800&auto=format&fit=crop",
+      cta: "Book Void Ticket",
+      href: "/void-ticket",
+      points: ["Verifiable reservation codes", "Embassy & VFS compliant", "Fast delivery on WhatsApp"],
     },
     {
       id: "documentation",

@@ -96,15 +96,15 @@ export default function ContactPage() {
 
             {/* Fast Assistance Widget */}
             <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
-              <h3 className="font-bold text-brand-dark text-sm">Need an Urgent Dummy Ticket?</h3>
+              <h3 className="font-bold text-brand-dark text-sm">Need an Urgent Void Ticket?</h3>
               <p className="text-xs text-brand-muted leading-relaxed">
-                If your embassy appointment is tomorrow, use our specialized Dummy Ticket portal for fast 30-minute delivery.
+                If your embassy appointment is tomorrow, use our specialized Void Ticket portal for fast 30-minute delivery.
               </p>
               <a
-                href="/dummy-ticket"
+                href="/void-ticket"
                 className="inline-block text-xs font-bold text-brand-navy hover:text-brand-yellow-dark underline decoration-brand-yellow decoration-2"
               >
-                Go to Dummy Ticket Portal →
+                Go to Void Ticket Portal →
               </a>
             </div>
           </div>
