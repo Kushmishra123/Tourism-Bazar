@@ -1,6 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
 import TrustStatsSection from '@/components/home/TrustStatsSection';
-import BoardingPassBanner from '@/components/home/BoardingPassBanner';
 import FeaturedHolidaysSection from '@/components/home/FeaturedHolidaysSection';
 import DestinationExplorerSection from '@/components/home/DestinationExplorerSection';
 import CoreServicesSection from '@/components/home/CoreServicesSection';
@@ -20,10 +19,7 @@ export default function HomePage() {
       {/* 2. 4-COLUMN TRUST METRICS STRIP */}
       <TrustStatsSection />
 
-      {/* 3. STYLED BOARDING PASS / E-TICKET BANNER */}
-      <BoardingPassBanner />
-
-      {/* 4. DEALS & PACKAGES CAROUSEL/GRID (WITH CATEGORY PILLS) */}
+      {/* 3. DEALS & PACKAGES CAROUSEL/GRID (WITH CATEGORY PILLS) */}
       <FeaturedHolidaysSection />
 
       {/* 5. DESTINATION EXPLORER GRID (DOMESTIC & INTERNATIONAL TABS) */}
